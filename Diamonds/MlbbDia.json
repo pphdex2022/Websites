@@ -13,22 +13,26 @@
     {"dia": 2195, "price": 1000},
     {"dia": 3688, "price": 1700},
     {"dia": 5532, "price": 2500},
-    {"dia": 9288, "price": 4200}
+    {"dia": 9288, "price": 4200},
+    {"dia": "Weekly Pass", "price": 3000},
+    {"dia": "Twilight Pass", "price": 280}
   ],
   "MlbbDiaMMK": [
-    {"dia": 86, "price": 45},
-    {"dia": 172, "price": 85},
-    {"dia": 257, "price": 135},
-    {"dia": 343, "price": 170},
-    {"dia": 429, "price": 210},
-    {"dia": 514, "price": 270},
-    {"dia": 600, "price": 300},
-    {"dia": 706, "price": 340},
-    {"dia": 1049, "price": 500},
-    {"dia": 1135, "price": 550},
-    {"dia": 2195, "price": 1000},
-    {"dia": 3688, "price": 1700},
-    {"dia": 5532, "price": 2500},
-    {"dia": 9288, "price": 4200}
+    {"dia": 86, "price": 4500},
+    {"dia": 172, "price": 8500},
+    {"dia": 257, "price": 13500},
+    {"dia": 343, "price": 17000},
+    {"dia": 429, "price": 21000},
+    {"dia": 514, "price": 27000},
+    {"dia": 600, "price": 30000},
+    {"dia": 706, "price": 34000},
+    {"dia": 1049, "price": 50000},
+    {"dia": 1135, "price": 55000},
+    {"dia": 2195, "price": 100000},
+    {"dia": 3688, "price": 170000},
+    {"dia": 5532, "price": 250000},
+    {"dia": 9288, "price": 420000},
+    {"dia": "Weekly Pass", "price": 30000},
+    {"dia": "Twilight Pass", "price": 28000}
   ]
 }
