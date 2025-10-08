@@ -1,0 +1,33 @@
+{
+  "homeScreen": {
+    "bannerContainer": {
+      "style": "neumorphic",
+      "bannerSlides": [
+        {
+          "id": 1,
+          "status": "active",
+          "image": {
+            "src": "https://drive.google.com/thumbnail?id=1KSYX7ZlwUZulkiWWSgQY-2jMHitSZfX1&sz=w1000",
+            "alt": "Banner 1"
+          }
+        },
+        {
+          "id": 2,
+          "status": "inactive",
+          "image": {
+            "src": "https://drive.google.com/thumbnail?id=1UKhXnO4a6eHXfH0LTURXDOguIMHkc7Gu&sz=w1000",
+            "alt": "Banner 2"
+          }
+        },
+        {
+          "id": 3,
+          "status": "inactive",
+          "image": {
+            "src": "https://drive.google.com/thumbnail?id=1u7A4kYUCZatZTNFVsWmFseXs7-BYDmno&sz=w1000",
+            "alt": "Banner 3"
+          }
+        }
+      ]
+    }
+  }
+}
