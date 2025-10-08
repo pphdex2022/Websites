@@ -1,0 +1,1527 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PPH-Gaming-Premium-VPN</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --mlbb-primary: #1E88E5;
+            --mlbb-secondary: #00BFFF;
+            --mlbb-accent: #2196F3;
+            --mlbb-dark: #e0e0e0;
+            --mlbb-darker: #ffffff;
+            --mlbb-light: #333333;
+            --mlbb-orange: #FF7F50;
+            --mlbb-purple: #9370DB;
+            --mlbb-green: #32CD32;
+            --mlbb-blue-dark: #0D47A1;
+            --nav-height: 60px;
+            --card-shadow: 8px 8px 16px rgba(0, 0, 0, 0.1), -8px -8px 16px rgba(255, 255, 255, 0.9);
+            --card-shadow-inset: inset 4px 4px 8px rgba(0, 0, 0, 0.1), inset -4px -4px 8px rgba(255, 255, 255, 0.9);
+            --transition: all 0.3s ease;
+            --border-radius: 12px;
+            --android-font: 'Roboto', 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        [data-theme="dark"] {
+            --mlbb-dark: #2c2c2e;
+            --mlbb-darker: #1c1c1e;
+            --mlbb-light: #ffffff;
+            --card-shadow: 8px 8px 16px rgba(0, 0, 0, 0.3), -8px -8px 16px rgba(255, 255, 255, 0.05);
+            --card-shadow-inset: inset 4px 4px 8px rgba(0, 0, 0, 0.3), inset -4px -4px 8px rgba(255, 255, 255, 0.05);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+            font-family: var(--android-font);
+        }
+
+        body {
+            background: var(--mlbb-dark);
+            color: var(--mlbb-light);
+            min-height: 100vh;
+            padding-bottom: var(--nav-height);
+            font-size: 14px;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            touch-action: manipulation;
+            transition: var(--transition);
+        }
+
+        .header {
+            background: var(--mlbb-dark);
+            padding: 0.8rem 1rem;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 0.5rem;
+            border-bottom-left-radius: var(--border-radius);
+            border-bottom-right-radius: var(--border-radius);
+            z-index: 10;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--mlbb-light);
+            margin-bottom: 0.2rem;
+            letter-spacing: 0.3px;
+        }
+
+        .theme-toggle {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            cursor: pointer;
+            font-size: 1.2rem;
+            color: var(--mlbb-light);
+            padding: 0.5rem;
+            border-radius: 50%;
+            background: var(--mlbb-dark);
+            box-shadow: var(--card-shadow);
+        }
+
+        .theme-toggle:hover {
+            box-shadow: var(--card-shadow-inset);
+        }
+
+        .currency-info {
+            text-align: center;
+            padding: 0.8rem;
+            background: var(--mlbb-darker);
+            border-radius: var(--border-radius);
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--mlbb-light);
+            box-shadow: var(--card-shadow);
+            margin: 0.5rem 1rem;
+        }
+
+        .premium-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.8rem;
+            padding: 0.8rem;
+            max-width: 100%;
+            margin: 0 auto;
+            animation: fadeInGrid 0.5s ease;
+        }
+
+        .premium-card {
+            background: var(--mlbb-darker);
+            border-radius: var(--border-radius);
+            padding: 1rem 0.6rem;
+            text-align: center;
+            transition: var(--transition);
+            box-shadow: var(--card-shadow);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            min-height: 120px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .premium-card:hover {
+            box-shadow: var(--card-shadow-inset);
+            transform: translateY(-3px);
+        }
+
+        .premium-card:active {
+            transform: scale(0.97);
+        }
+
+        .premium-icon {
+            margin-bottom: 0.5rem;
+        }
+        .premium-img {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .premium-card:hover .premium-icon {
+            transform: scale(1.2);
+        }
+
+        .header-img {
+            width: 20px;
+            height: 20px;
+            object-fit: contain;
+            margin-right: 0.5rem;
+        }
+
+        .premium-amount {
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0.2rem;
+            color: var(--mlbb-light);
+        }
+
+        .premium-price {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--mlbb-light);
+            background: var(--mlbb-darker);
+            padding: 0.2rem 0.6rem;
+            border-radius: 15px;
+            display: inline-block;
+            margin-top: 0.2rem;
+            box-shadow: var(--card-shadow-inset);
+        }
+
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            display: none;
+            overflow-y: auto;
+            padding: 0.8rem;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .modal-content {
+            background: var(--mlbb-darker);
+            border-radius: var(--border-radius);
+            width: 90%;
+            max-width: 320px;
+            margin: auto;
+            padding: 1rem;
+            box-shadow: var(--card-shadow);
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: modalOpen 0.3s ease-out;
+            color: var(--mlbb-light);
+            z-index: 1001;
+        }
+
+        .modal-title {
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+            text-align: center;
+            color: var(--mlbb-primary);
+            font-weight: 600;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 1.5rem;
+            color: var(--mlbb-light);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .close-btn:hover {
+            color: var(--mlbb-primary);
+        }
+
+        .form-group {
+            margin-bottom: 0.8rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.4rem;
+            font-weight: 500;
+            font-size: 0.85rem;
+            color: var(--mlbb-light);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.6rem 0.8rem;
+            background: var(--mlbb-darker);
+            border: none;
+            border-radius: 6px;
+            color: var(--mlbb-light);
+            font-size: 0.85rem;
+            transition: var(--transition);
+            box-shadow: var(--card-shadow-inset);
+        }
+
+        .form-control:focus {
+            outline: none;
+            box-shadow: var(--card-shadow);
+        }
+
+        .file-upload {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.8rem;
+            background: var(--mlbb-darker);
+            border-radius: 6px;
+            transition: var(--transition);
+            box-shadow: var(--card-shadow);
+        }
+
+        .file-upload:hover {
+            box-shadow: var(--card-shadow-inset);
+        }
+
+        .file-upload-btn {
+            cursor: pointer;
+            color: var(--mlbb-light);
+            font-size: 0.85rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.4rem 0.8rem;
+            background: var(--mlbb-darker);
+            border-radius: 6px;
+            transition: var(--transition);
+            box-shadow: var(--card-shadow);
+        }
+
+        .file-upload-btn:hover {
+            box-shadow: var(--card-shadow-inset);
+        }
+
+        .file-upload input[type="file"] {
+            display: none;
+        }
+
+        .payment-info {
+            background: var(--mlbb-darker);
+            border-radius: 6px;
+            padding: 0.6rem;
+            margin-bottom: 1rem;
+            box-shadow: var(--card-shadow-inset);
+        }
+
+        .payment-method {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.6rem;
+            padding-bottom: 0.6rem;
+            border-bottom: 1px solid rgba(30, 136, 229, 0.1);
+        }
+
+        .payment-method:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .payment-icon {
+            font-size: 1.1rem;
+            margin-right: 0.7rem;
+            color: var(--mlbb-primary);
+            min-width: 22px;
+        }
+
+        .payment-method strong {
+            display: block;
+            margin-bottom: 0.1rem;
+            font-size: 0.85rem;
+            color: var(--mlbb-light);
+        }
+
+        .payment-method small {
+            display: block;
+            font-size: 0.75rem;
+            color: var(--mlbb-light);
+            opacity: 0.7;
+            line-height: 1.4;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 0.8rem;
+            background: var(--mlbb-darker);
+            color: var(--mlbb-light);
+            border: none;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 1rem;
+            transition: var(--transition);
+            box-shadow: var(--card-shadow);
+        }
+
+        .submit-btn:hover {
+            box-shadow: var(--card-shadow-inset);
+        }
+
+        .submit-btn:active {
+            transform: translateY(1px);
+            box-shadow: var(--card-shadow-inset);
+        }
+
+        .submit-btn i {
+            margin-right: 6px;
+        }
+
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: var(--nav-height);
+            background: var(--mlbb-darker);
+            display: flex;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 100;
+            padding: 0 0.8rem;
+            box-shadow: var(--card-shadow);
+        }
+
+        .nav-item {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--mlbb-light);
+            opacity: 0.7;
+            text-decoration: none;
+            font-size: 0.65rem;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-item.active {
+            opacity: 1;
+        }
+
+        .nav-item.active::after {
+            content: '';
+            position: absolute;
+            bottom: 6px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 18px;
+            height: 2px;
+            background: var(--mlbb-primary);
+            border-radius: 2px;
+        }
+
+        .nav-item i {
+            font-size: 1.1rem;
+            margin-bottom: 3px;
+        }
+
+        .spinner {
+            display: none;
+            width: 28px;
+            height: 28px;
+            margin: 0.8rem auto;
+            border: 2px solid rgba(30, 136, 229, 0.1);
+            border-radius: 50%;
+            border-top: 2px solid var(--mlbb-primary);
+            border-right: 2px solid var(--mlbb-secondary);
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .success-banner {
+            background: var(--mlbb-darker);
+            color: var(--mlbb-light);
+            text-align: center;
+            padding: 10px;
+            border-radius: 6px;
+            font-weight: 600;
+            animation: fadeIn 0.3s ease-out;
+            position: fixed;
+            bottom: 70px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            width: 90%;
+            max-width: 320px;
+            box-shadow: var(--card-shadow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+        }
+
+        .success-banner i {
+            margin-right: 8px;
+            font-size: 1.1rem;
+            color: var(--mlbb-green);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px) translateX(-50%); }
+            to { opacity: 1; transform: translateY(0) translateX(-50%); }
+        }
+
+        .orders-container {
+            padding: 0.8rem;
+            display: none;
+        }
+
+        .order-card {
+            background: var(--mlbb-darker);
+            border-radius: var(--border-radius);
+            padding: 0.9rem;
+            margin-bottom: 0.8rem;
+            font-size: 0.8rem;
+            box-shadow: var(--card-shadow);
+            color: var(--mlbb-light);
+        }
+
+        .order-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--mlbb-primary);
+        }
+
+        .order-details {
+            font-size: 0.8rem;
+            color: var(--mlbb-light);
+            margin-bottom: 0.4rem;
+            line-height: 1.5;
+        }
+
+        .order-status {
+            font-size: 0.65rem;
+            padding: 0.15rem 0.5rem;
+            border-radius: 10px;
+            background: var(--mlbb-darker);
+            color: var(--mlbb-primary);
+            display: inline-block;
+            font-weight: 600;
+            box-shadow: var(--card-shadow-inset);
+        }
+
+        .order-date {
+            font-size: 0.65rem;
+            color: var(--mlbb-light);
+            opacity: 0.6;
+            margin-top: 0.5rem;
+            text-align: right;
+        }
+
+        .no-orders {
+            text-align: center;
+            padding: 2rem;
+            color: var(--mlbb-light);
+            opacity: 0.5;
+            font-size: 0.9rem;
+        }
+
+        .no-orders i {
+            font-size: 1.8rem;
+            margin-bottom: 0.8rem;
+            opacity: 0.5;
+        }
+
+        .help-item {
+            background: var(--mlbb-darker);
+            border-radius: var(--border-radius);
+            padding: 1rem;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: var(--card-shadow);
+            color: var(--mlbb-light);
+        }
+
+        .help-item:hover {
+            box-shadow: var(--card-shadow-inset);
+        }
+
+        .help-item:active {
+            transform: scale(0.98);
+        }
+
+        .help-item i:first-child {
+            margin-right: 0.8rem;
+            color: var(--mlbb-primary);
+            font-size: 1rem;
+        }
+
+        .help-item i:last-child {
+            color: var(--mlbb-light);
+            opacity: 0.5;
+            font-size: 0.8rem;
+        }
+
+        .help-item span {
+            flex: 1;
+            font-size: 0.85rem;
+        }
+
+        .floating-ball {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: var(--mlbb-darker);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--card-shadow);
+            cursor: pointer;
+            z-index: 99;
+            transition: all 0.3s ease;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .floating-ball i {
+            font-size: 1.8rem;
+            color: var(--mlbb-primary);
+        }
+
+        .floating-ball:hover {
+            box-shadow: var(--card-shadow-inset);
+            transform: scale(1.1);
+        }
+
+        .floating-ball:active {
+            transform: scale(0.95);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @media (max-width: 350px) {
+            .premium-grid {
+                grid-template-columns: 1fr;
+            }
+            .premium-card {
+                min-height: 110px;
+                padding: 0.8rem 0.5rem;
+            }
+            .modal-content {
+                padding: 0.8rem;
+            }
+        }
+
+        @media (min-width: 400px) {
+            .premium-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .modal-content {
+                max-width: 320px;
+            }
+        }
+
+        @media (orientation: landscape) {
+            .premium-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .modal-content {
+                max-width: 350px;
+            }
+        }
+
+        ::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--mlbb-darker);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--mlbb-primary);
+            border-radius: 3px;
+        }
+
+        input, textarea, select {
+            -webkit-tap-highlight-color: rgba(0,0,0,0);
+            -webkit-user-select: text;
+        }
+
+        @keyframes modalOpen {
+            from { opacity: 0; transform: translate(-50%, -60%); }
+            to { opacity: 1; transform: translate(-50%, -50%); }
+        }
+
+        @keyframes fadeInGrid {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .payment-select-wrapper {
+            position: relative;
+        }
+
+        .payment-select-wrapper select {
+            background: var(--mlbb-darker) !important;
+            color: var(--mlbb-light) !important;
+            border: none !important;
+            box-shadow: var(--card-shadow-inset);
+            appearance: none;
+            -webkit-appearance: none;
+            padding-right: 2rem;
+        }
+
+        .payment-select-wrapper .select-arrow {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            pointer-events: none;
+        }
+
+        .payment-select-wrapper .select-arrow i {
+            color: var(--mlbb-primary);
+        }
+
+        .payment-method-card {
+            color: var(--mlbb-light);
+            display: flex;
+            align-items: center;
+        }
+
+        ::placeholder {
+            color: var(--mlbb-light) !important;
+            opacity: 0.6;
+        }
+
+        :-ms-input-placeholder {
+            color: var(--mlbb-light) !important;
+            opacity: 0.6;
+        }
+
+        ::-ms-input-placeholder {
+            color: var(--mlbb-light) !important;
+            opacity: 0.6;
+        }
+
+        .payment-icon-circle {
+            width: 40px;
+            height: 40px;
+            background: var(--mlbb-darker);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 0.8rem;
+            flex-shrink: 0;
+            box-shadow: var(--card-shadow);
+        }
+
+        .payment-icon-circle img {
+            width: 24px;
+            height: 24px;
+            object-fit: contain;
+        }
+
+        #selectedPaymentDetails {
+            background: var(--mlbb-darker);
+            padding: 0.6rem;
+            border-radius: 6px;
+            box-shadow: var(--card-shadow-inset);
+        }
+
+        #promptPayQR img {
+            width: 150px;
+            height: auto;
+            border-radius: 6px;
+            box-shadow: var(--card-shadow);
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body data-theme="light">
+    <!-- Header Section -->
+    <div class="header">
+        <div class="logo">PPH-Gaming-Premium-VPN</div>
+        <div class="theme-toggle" onclick="toggleTheme()">
+            <i class="fas fa-moon"></i>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div id="vpnContent">
+        <!-- Premium Plans Section -->
+        <div style="padding: 0 1rem; margin-top: 1rem;">
+            <h3 style="color: var(--mlbb-accent); border-bottom: 2px solid var(--mlbb-secondary); padding-bottom: 0.5rem; display: flex; align-items: center;">
+                <i class="fas fa-shield-alt" style="margin-right: 0.5rem;"></i>
+                Premium VPN အစီအစဉ်များ
+            </h3>
+        </div>
+
+        <!-- Premium Plans -->
+        <div class="premium-grid">
+            <div class="premium-card" onclick="openModal('1 month', 'vpn')">
+                <div class="premium-icon">
+                    <img src="https://raw.githubusercontent.com/pphdex2022/Websites/refs/heads/main/pphdexvip/ic_icon.png" alt="Premium Icon" class="premium-img">
+                </div>
+                <div class="premium-amount">1 month</div>
+                <div class="premium-price">Loading...</div>
+            </div>
+            <div class="premium-card" onclick="openModal('2 months', 'vpn')">
+                <div class="premium-icon">
+                    <img src="https://raw.githubusercontent.com/pphdex2022/Websites/refs/heads/main/pphdexvip/ic_icon.png" alt="Premium Icon" class="premium-img">
+                </div>
+                <div class="premium-amount">2 months</div>
+                <div class="premium-price">Loading...</div>
+            </div>
+            <div class="premium-card" onclick="openModal('3 months', 'vpn')">
+                <div class="premium-icon">
+                    <img src="https://raw.githubusercontent.com/pphdex2022/Websites/refs/heads/main/pphdexvip/ic_icon.png" alt="Premium Icon" class="premium-img">
+                </div>
+                <div class="premium-amount">3 months</div>
+                <div class="premium-price">Loading...</div>
+            </div>
+            <div class="premium-card" onclick="openModal('4 months', 'vpn')">
+                <div class="premium-icon">
+                    <img src="https://raw.githubusercontent.com/pphdex2022/Websites/refs/heads/main/pphdexvip/ic_icon.png" alt="Premium Icon" class="premium-img">
+                </div>
+                <div class="premium-amount">4 months</div>
+                <div class="premium-price">Loading...</div>
+            </div>
+            <div class="premium-card" onclick="openModal('5 months', 'vpn')">
+                <div class="premium-icon">
+                    <img src="https://raw.githubusercontent.com/pphdex2022/Websites/refs/heads/main/pphdexvip/ic_icon.png" alt="Premium Icon" class="premium-img">
+                </div>
+                <div class="premium-amount">5 months</div>
+                <div class="premium-price">Loading...</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Orders Section -->
+    <div id="ordersContent" class="orders-container">
+        <div class="no-orders">
+            <i class="fas fa-clipboard-list"></i><br>
+            မှတ်တမ်းမရှိသေးပါ
+        </div>
+    </div>
+
+    <!-- Purchase Modal -->
+    <div id="purchaseModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h2 class="modal-title" id="modalTitle">Premium ဝယ်ယူရန်</h2>
+
+            <div class="payment-info" id="paymentInfo">
+                <div class="form-group">
+                    <div class="payment-select-wrapper">
+                        <select id="paymentMethod" class="form-control" required>
+                            <option value="" selected disabled>ငွေလွှဲနည်းလမ်း ရွေးပါ</option>
+                            <option value="scbeasy">SCB EASY - 4381489599 (9 AM - 12 PM)</option>
+                            <option value="TrueMoney">TrueMoney - 0831072369 (9 AM - 12 PM)</option>
+                            <option value="promptpay">Prompt Pay (QR Code) (9 AM - 12 PM)</option>
+                        </select>
+                        <div class="select-arrow">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="selectedPaymentDetails" style="display: none;">
+                    <div id="promptPayQR" style="display: none; text-align: center; margin-top: 1rem;">
+                        <img id="promptPayQRImage" src="https://raw.githubusercontent.com/pphdex2022/Websites/refs/heads/main/Diamonds/bank.jpg" alt="Prompt Pay QR Code">
+                    </div>
+                    <div id="paymentMethodCard" style="display: none;" class="payment-method-card">
+                        <div class="payment-icon-circle">
+                            <img id="paymentMethodIcon" src="" alt="Payment Icon" style="width: 24px; height: 24px; object-fit: contain;">
+                        </div>
+                        <div>
+                            <div id="paymentMethodName"></div>
+                            <div id="paymentAccountDetails"></div>
+                            <div>
+                                <i class="fas fa-clock"></i>
+                                <span id="processingTime"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <form id="purchaseForm">
+                <input type="hidden" id="selectedPackage">
+                <input type="hidden" id="gameType">
+
+                <div class="form-group">
+                    <label for="devId">DEV ID</label>
+                    <input type="text" id="devId" class="form-control" placeholder="DEV ID ထည့်ပါ" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="contactInfo" id="contactInfoLabel">လိပ်စာ (သို့မဟုတ် ဖုန်းနံပါတ်/နာမည်/မက်ဆေ့ချ်အကောင့်လင့်ခ်)</label>
+                    <input type="text" id="contactInfo" class="form-control" placeholder="လိပ်စာ သို့မဟုတ် ဖုန်းနံပါတ် ထည့်ပါ" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="paymentProof">ငွေပေးချေမှု အတည်ပြုချက် (ဓာတ်ပုံ)</label>
+                    <div class="file-upload">
+                        <label for="paymentProof" class="file-upload-btn">
+                            <i class="fas fa-cloud-upload-alt"></i><br>
+                            ဖိုင်ရွေးရန်
+                        </label>
+                        <input type="file" id="paymentProof" accept="image/*" required>
+                        <span id="fileUploadLabel" style="margin-left: 0.5rem; font-size: 0.85rem;"></span>
+                    </div>
+                </div>
+
+                <div class="spinner" id="spinner"></div>
+
+                <button type="submit" class="submit-btn" id="submitBtn">
+                    <i class="fas fa-paper-plane"></i> အော်ဒါတင်မည်
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <div class="bottom-nav">
+        <a href="#" class="nav-item active" onclick="showHome()">
+            <i class="fas fa-shield-alt"></i>
+            <span>Premium</span>
+        </a>
+        <a href="#" class="nav-item" onclick="showOrders()">
+            <i class="fas fa-clipboard-list"></i>
+            <span>မှတ်တမ်း</span>
+        </a>
+        <a href="#" class="nav-item" onclick="showHelp()">
+            <i class="fas fa-question-circle"></i>
+            <span>Help</span>
+        </a>
+    </div>
+
+    <!-- Help Section -->
+    <div id="helpContent" class="orders-container" style="display: none;">
+        <div class="help-item" onclick="showContactCorrectionForm()">
+            <i class="fas fa-exclamation-triangle"></i>
+            <span>လိပ်စာနှင့် DEV ID မှားချင်းဖြေရှင်းချက်</span>
+            <i class="fas fa-chevron-right"></i>
+        </div>
+        <div class="help-item" onclick="window.open('https://t.me/pphgamingshop', '_blank')">
+            <i class="fas fa-paper-plane"></i>
+            <span>Official Channel</span>
+            <i class="fas fa-chevron-right"></i>
+        </div>
+        <div class="help-item" onclick="showPremiumNotReceivedInfo()">
+            <i class="fas fa-clock"></i>
+            <span>Premium မရောက်ချင်း</span>
+            <i class="fas fa-chevron-right"></i>
+        </div>
+    </div>
+
+    <!-- Contact Correction Modal -->
+    <div id="contactCorrectionModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeContactCorrectionModal()">&times;</span>
+            <h2 class="modal-title">လိပ်စာနှင့် DEV ID မှားချင်းဖြေရှင်းချက်</h2>
+
+            <form id="contactCorrectionForm">
+                <div class="form-group">
+                    <label for="correctionDevId">DEV ID (အသစ်)</label>
+                    <input type="text" id="correctionDevId" class="form-control" placeholder="DEV ID အသစ်ထည့်ပါ" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="correctionContactInfo">လိပ်စာ (အသစ်)</label>
+                    <input type="text" id="correctionContactInfo" class="form-control" placeholder="လိပ်စာ သို့မဟုတ် ဖုန်းနံပါတ် အသစ်ထည့်ပါ" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="correctionProof">အော်ဒါမှတ်တန်းပုံ</label>
+                    <div class="file-upload">
+                        <label for="correctionProof" class="file-upload-btn">
+                            <i class="fas fa-cloud-upload-alt"></i><br>
+                            ဖိုင်ရွေးရန်
+                        </label>
+                        <input type="file" id="correctionProof" accept="image/*" required>
+                        <span id="correctionFileLabel" style="margin-left: 0.5rem; font-size: 0.85rem;"></span>
+                    </div>
+                </div>
+
+                <div class="spinner" id="correctionSpinner"></div>
+
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-paper-plane"></i> ပေးပို့မည်
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Premium Not Received Modal -->
+    <div id="premiumNotReceivedModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closePremiumNotReceivedModal()">&times;</span>
+            <h2 class="modal-title">Premium မရောက်ချင်း</h2>
+
+            <div class="payment-info">
+                <p>
+                    Premium မရောက်ချင်းမှာ<br>
+                    အော်ဒါတင်ထားတဲ့ လိပ်စာ သို့မဟုတ် DEV ID<br>
+                    ဖုန်းနံပါတ်/မက်ဆေ့ချ်အကောင့် မှားချင်း တို့ကြောင့်ဖြစ်သည်<br>
+                    အော်ဒါမှတ်တန်းတွင် စစ်ဆေးပါ
+                </p>
+                <p>
+                    အကုန်မှန်ပါသော်လည်း မရောက်ပါက<br>
+                    10 မိနစ်စောင့်ပေးပါ<br>
+                    မရောက်ရှိသေးရင်<br>
+                    အကြောင်းကြားပေးပါ
+                    Telegram @pphgaming
+                </p>
+            </div>
+
+            <button class="submit-btn" onclick="closePremiumNotReceivedModal()">
+                <i class="fas fa-check"></i> နားလည်ပါသည်
+            </button>
+        </div>
+    </div>
+
+    <!-- Floating Ball -->
+    <div class="floating-ball" onclick="window.open('https://t.me/pphgaming', '_blank')">
+        <i class="fas fa-comment"></i>
+    </div>
+
+    <script>
+        const TELEGRAM_BOT_TOKEN = '7773156184:AAFgmlfQdCH-8nDl_VWU6SqWGOspRf7Oes4';
+        const TELEGRAM_GROUP_ID = '6755454419';
+        let currentGame = 'vpn';
+        let currentCurrency = 'THB';
+
+        // Fallback prices for THB
+        const fallbackPrices = {
+            THB: [
+                { Premium: "1 month", price: 70 },
+                { Premium: "2 months", price: 140 },
+                { Premium: "3 months", price: 200 },
+                { Premium: "4 months", price: 260 },
+                { Premium: "5 months", price: 340 }
+            ]
+        };
+
+        // Toggle theme
+        function toggleTheme() {
+            const body = document.body;
+            const currentTheme = body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            body.setAttribute('data-theme', newTheme);
+            document.querySelector('.theme-toggle i').className = `fas fa-${newTheme === 'light' ? 'moon' : 'sun'}`;
+            localStorage.setItem('theme', newTheme);
+        }
+
+        // Load theme from localStorage
+        function loadTheme() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.body.setAttribute('data-theme', savedTheme);
+            document.querySelector('.theme-toggle i').className = `fas fa-${savedTheme === 'light' ? 'moon' : 'sun'}`;
+        }
+
+        // Fetch prices from JSON
+        function loadPricesFromJSON() {
+            document.querySelectorAll('.premium-price').forEach(price => price.textContent = 'Loading...');
+
+            fetch('https://raw.githubusercontent.com/pphdex2022/Websites/refs/heads/main/pphdexvip/Premium.json')
+                .then(response => {
+                    if (!response.ok) throw new Error('Network response was not ok');
+                    return response.json();
+                })
+                .then(data => {
+                    const prices = data['PremiumVIPTHB'] || fallbackPrices['THB'];
+                    updatePricesUI(prices);
+                })
+                .catch(error => {
+                    console.error("JSON fetch error:", error);
+                    alert("စျေးနှုန်းများကို မရနိုင်ပါ။ နောက်မှ ထပ်ကြိုးစားပါ။");
+                    updatePricesUI(fallbackPrices['THB']);
+                });
+        }
+
+        // Update UI with prices
+        function updatePricesUI(prices) {
+            const currencySymbol = '฿';
+            document.querySelectorAll("#vpnContent .premium-card").forEach((card) => {
+                const amount = card.querySelector(".premium-amount").innerText;
+                const priceObj = prices.find(item => item.Premium === amount);
+                if (priceObj) {
+                    card.querySelector(".premium-price").innerText = priceObj.price.toLocaleString() + ` ${currencySymbol}`;
+                } else {
+                    card.querySelector(".premium-price").innerText = "N/A";
+                }
+            });
+        }
+
+        // Open purchase modal
+        function openModal(packageName, gameType) {
+            document.getElementById('selectedPackage').value = packageName;
+            document.getElementById('gameType').value = gameType;
+            document.getElementById('modalTitle').textContent = packageName + ' ဝယ်ယူရန်';
+            document.getElementById('contactInfoLabel').textContent = 'လိပ်စာ (သို့မဟုတ် ဖုန်းနံပါတ်/နာမည်/မက်ဆေ့ချ်အကောင့်လင့်ခ်)';
+            document.getElementById('contactInfo').placeholder = 'လိပ်စာ သို့မဟုတ် ဖုန်းနံပါတ် ထည့်ပါ';
+            document.getElementById('purchaseModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+            document.getElementById('spinner').style.display = 'none';
+            document.getElementById('submitBtn').style.display = 'block';
+            document.getElementById('purchaseForm').reset();
+            document.getElementById('paymentMethod').value = '';
+            document.getElementById('selectedPaymentDetails').style.display = 'none';
+            document.getElementById('promptPayQR').style.display = 'none';
+            document.getElementById('paymentMethodCard').style.display = 'none';
+            document.getElementById('fileUploadLabel').textContent = '';
+            document.getElementById('paymentProof').value = '';
+        }
+
+        // Close modal
+        function closeModal() {
+            document.getElementById('purchaseModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Send to Telegram directly
+        async function sendTelegramPhotoWithCaption(file, caption) {
+            const formData = new FormData();
+            formData.append('chat_id', TELEGRAM_GROUP_ID);
+            formData.append('photo', file);
+            formData.append('caption', caption);
+            formData.append('parse_mode', 'HTML');
+
+            try {
+                const response = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendPhoto`, {
+                    method: 'POST',
+                    body: formData
+                });
+                const data = await response.json();
+                console.log('Telegram response:', data);
+                if (!data.ok) {
+                    throw new Error(data.description || 'Telegram API error');
+                }
+                return data;
+            } catch (error) {
+                console.error('Error sending to Telegram:', error);
+                throw error;
+            }
+        }
+
+        // Submit handler
+        document.getElementById('purchaseForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            console.log('Form submission triggered');
+
+            const packageName = document.getElementById('selectedPackage').value;
+            const gameType = document.getElementById('gameType').value;
+            const devId = document.getElementById('devId').value.trim();
+            const contactInfo = document.getElementById('contactInfo').value.trim();
+            const paymentProof = document.getElementById('paymentProof').files[0];
+            const paymentMethod = document.getElementById('paymentMethod').value;
+
+            console.log('Form data:', { packageName, gameType, devId, contactInfo, paymentMethod, paymentProof });
+
+            if (!paymentMethod) {
+                alert("ကျေးဇူးပြု၍ ငွေလွှဲနည်းလမ်း ရွေးပါ");
+                return;
+            }
+
+            if (!devId) {
+                alert("ကျေးဇူးပြု၍ DEV ID ထည့်ပါ");
+                return;
+            }
+
+            if (!contactInfo) {
+                alert("ကျေးဇူးပြု၍ လိပ်စာ သို့မဟုတ် ဖုန်းနံပါတ် ထည့်ပါ");
+                return;
+            }
+
+            if (!paymentProof) {
+                alert("ကျေးဇူးပြု၍ ငွေပေးချေမှု အတည်ပြုချက် ဓာတ်ပုံတင်ပါ");
+                return;
+            }
+
+            if (paymentProof.size > 5 * 1024 * 1024) {
+                alert("ဖိုင်အရွယ်အစားသည် 5MB ထက်မကြီးရပါ။");
+                document.getElementById('paymentProof').value = '';
+                document.getElementById('fileUploadLabel').textContent = '';
+                return;
+            }
+
+            if (!paymentProof.type.startsWith('image/')) {
+                alert("ဓာတ်ပုံဖိုင်တစ်ခုသာ တင်ပေးပါ။");
+                document.getElementById('paymentProof').value = '';
+                document.getElementById('fileUploadLabel').textContent = '';
+                return;
+            }
+
+            document.getElementById('submitBtn').style.display = 'none';
+            document.getElementById('spinner').style.display = 'block';
+
+            const now = new Date();
+            const timeStr = now.toLocaleTimeString('en-US', { hour12: true, hour: 'numeric', minute: 'numeric' });
+
+            let paymentPhone = '';
+            switch(paymentMethod) {
+                case 'scbeasy':
+                    paymentPhone = '4381489599';
+                    break;
+                case 'TrueMoney':
+                    paymentPhone = '0831072369';
+                    break;
+                case 'promptpay':
+                    paymentPhone = 'Prompt Pay QR';
+                    break;
+            }
+
+            const messageText = `📢 New Order\n\n` +
+                `💎 Plan: ${packageName}\n` +
+                `🆔 DEV ID: ${devId}\n` +
+                `📱 ငွေလွှဲ PH: ${paymentPhone}\n` +
+                `📍 Contact Info: ${contactInfo}\n\n` +
+                `⏰ အချိန်: ${timeStr}\n` +
+                `💰 Currency: THB`;
+
+            try {
+                await sendTelegramPhotoWithCaption(paymentProof, messageText);
+                closeModal();
+                showSuccessBanner();
+                addToOrders(packageName, gameType, devId, contactInfo, timeStr);
+            } catch (err) {
+                console.error("Submission error:", err);
+                alert("အော်ဒါတင်ရန် မအောင်မြင်ပါ။ ဆာဗာချိတ်ဆက်မှု ပြဿနာဖြစ်နိုင်သည်။ ကျေးဇူးပြု၍ Telegram @pphgaming သို့ ဆက်သွယ်ပါ သို့မဟုတ် နောက်မှ ထပ်ကြိုးစားပါ။");
+                document.getElementById('spinner').style.display = 'none';
+                document.getElementById('submitBtn').style.display = 'block';
+            }
+        });
+
+        // Add order to UI and storage
+        function addToOrders(packageName, gameType, devId, contactInfo, timeStr) {
+            const now = new Date();
+            const dateStr = now.toLocaleDateString('my-MM', { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            });
+
+            const ordersContainer = document.getElementById('ordersContent');
+            const orderCard = document.createElement('div');
+            orderCard.className = 'order-card';
+            orderCard.innerHTML = `
+                <div class="order-header">
+                    <span>${packageName}</span>
+                    <span class="order-status">အော်ဒါတင်ထားသည်</span>
+                </div>
+                <div class="order-details">
+                    <div>DEV ID: ${devId}</div>
+                    <div>လိပ်စာ: ${contactInfo}</div>
+                    <div>အမျိုးအစား: ${getGameTypeName(gameType)}</div>
+                    <div>ငွေကြေး: THB</div>
+                </div>
+                <div class="order-date">${dateStr} ${timeStr}</div>
+            `;
+            ordersContainer.insertBefore(orderCard, ordersContainer.firstChild);
+
+            const noOrdersMsg = ordersContainer.querySelector('.no-orders');
+            if (noOrdersMsg) noOrdersMsg.style.display = 'none';
+
+            let orders = JSON.parse(localStorage.getItem('ordersList') || '[]');
+            orders.unshift({ 
+                packageName, 
+                gameType, 
+                devId,
+                contactInfo, 
+                dateStr, 
+                timeStr,
+                currency: 'THB' 
+            });
+            
+            if (orders.length > 50) orders = orders.slice(0, 50);
+            localStorage.setItem('ordersList', JSON.stringify(orders));
+        }
+
+        // Get game type name in Burmese
+        function getGameTypeName(gameType) {
+            switch(gameType) {
+                case 'vpn': return 'Premium VPN';
+                default: return gameType;
+            }
+        }
+
+        // Load orders from localStorage
+        function loadOrdersFromStorage() {
+            const storedOrders = JSON.parse(localStorage.getItem('ordersList') || '[]');
+            const ordersContainer = document.getElementById('ordersContent');
+
+            if (storedOrders.length > 0) {
+                ordersContainer.innerHTML = '';
+                storedOrders.forEach(order => {
+                    const orderCard = document.createElement('div');
+                    orderCard.className = 'order-card';
+                    orderCard.innerHTML = `
+                        <div class="order-header">
+                            <span>${order.packageName}</span>
+                            <span class="order-status">အော်ဒါတင်ထားသည်</span>
+                        </div>
+                        <div class="order-details">
+                            <div>DEV ID: ${order.devId}</div>
+                            <div>လိပ်စာ: ${order.contactInfo}</div>
+                            <div>အမျိုးအစား: ${getGameTypeName(order.gameType)}</div>
+                            <div>ငွေကြေး: ${order.currency || 'THB'}</div>
+                        </div>
+                        <div class="order-date">${order.dateStr} ${order.timeStr}</div>
+                    `;
+                    ordersContainer.appendChild(orderCard);
+                });
+            }
+        }
+
+        // Show success banner
+        function showSuccessBanner() {
+            const successBanner = document.createElement('div');
+            successBanner.className = 'success-banner';
+            successBanner.innerHTML = `
+                <i class="fas fa-check-circle"></i>
+                <div>
+                    <div>ပေးပို့ချင်းအောင်မြင်ပါသည်</div>
+                    <div style="font-size:0.8rem; margin-top:2px;">ကျေးဇူးတင်ပါသည်</div>
+                </div>
+            `;
+            document.body.appendChild(successBanner);
+            setTimeout(() => {
+                successBanner.style.animation = 'fadeIn 0.5s ease reverse';
+                setTimeout(() => document.body.removeChild(successBanner), 500);
+            }, 3000);
+        }
+
+        // Navigation
+        function showHome() {
+            document.getElementById('vpnContent').style.display = 'block';
+            document.getElementById('ordersContent').style.display = 'none';
+            document.getElementById('helpContent').style.display = 'none';
+            document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+        }
+
+        function showOrders() {
+            document.getElementById('vpnContent').style.display = 'none';
+            document.getElementById('ordersContent').style.display = 'block';
+            document.getElementById('helpContent').style.display = 'none';
+            document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+        }
+
+        function showHelp() {
+            document.getElementById('vpnContent').style.display = 'none';
+            document.getElementById('ordersContent').style.display = 'none';
+            document.getElementById('helpContent').style.display = 'block';
+            document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+        }
+
+        // File upload label
+        document.getElementById('paymentProof').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            const fileLabel = document.getElementById('fileUploadLabel');
+            if (file) {
+                fileLabel.textContent = file.name;
+                console.log('File selected:', file.name);
+            } else {
+                fileLabel.textContent = '';
+                console.log('No file selected');
+            }
+        });
+
+        // File upload label for correction form
+        document.getElementById('correctionProof').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            const fileLabel = document.getElementById('correctionFileLabel');
+            if (file) {
+                fileLabel.textContent = file.name;
+            } else {
+                fileLabel.textContent = '';
+            }
+        });
+
+        // Modal click outside
+        window.addEventListener('click', function(event) {
+            if (event.target === document.getElementById('purchaseModal')) {
+                closeModal();
+            }
+            if (event.target === document.getElementById('contactCorrectionModal')) {
+                closeContactCorrectionModal();
+            }
+            if (event.target === document.getElementById('premiumNotReceivedModal')) {
+                closePremiumNotReceivedModal();
+            }
+        });
+
+        // Show contact correction form
+        function showContactCorrectionForm() {
+            document.getElementById('contactCorrectionModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+            document.getElementById('contactCorrectionForm').reset();
+            document.getElementById('correctionFileLabel').textContent = '';
+            document.getElementById('correctionSpinner').style.display = 'none';
+            document.querySelector('#contactCorrectionForm .submit-btn').style.display = 'block';
+        }
+
+        // Close contact correction modal
+        function closeContactCorrectionModal() {
+            document.getElementById('contactCorrectionModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Show premium not received info
+        function showPremiumNotReceivedInfo() {
+            document.getElementById('premiumNotReceivedModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close premium not received modal
+        function closePremiumNotReceivedModal() {
+            document.getElementById('premiumNotReceivedModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Handle contact correction form submission
+        document.getElementById('contactCorrectionForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const correctionDevId = document.getElementById('correctionDevId').value.trim();
+            const correctionContactInfo = document.getElementById('correctionContactInfo').value.trim();
+            const proof = document.getElementById('correctionProof').files[0];
+
+            if (!correctionDevId) {
+                alert("ကျေးဇူးပြု၍ DEV ID အသစ်ထည့်ပါ");
+                return;
+            }
+
+            if (!correctionContactInfo) {
+                alert("ကျေးဇူးပြု၍ လိပ်စာ သို့မဟုတ် ဖုန်းနံပါတ် အသစ်ထည့်ပါ");
+                return;
+            }
+
+            if (!proof) {
+                alert("ကျေးဇူးပြု၍ အော်ဒါမှတ်တန်းပုံ တင်ပါ");
+                return;
+            }
+
+            if (proof.size > 5 * 1024 * 1024) {
+                alert("ဖိုင်အရွယ်အစားသည် 5MB ထက်မကြီးရပါ။");
+                document.getElementById('correctionProof').value = '';
+                document.getElementById('correctionFileLabel').textContent = '';
+                return;
+            }
+
+            if (!proof.type.startsWith('image/')) {
+                alert("ဓာတ်ပုံဖိုင်တစ်ခုသာ တင်ပေးပါ။");
+                document.getElementById('correctionProof').value = '';
+                document.getElementById('correctionFileLabel').textContent = '';
+                return;
+            }
+
+            document.getElementById('correctionSpinner').style.display = 'block';
+            document.querySelector('#contactCorrectionForm .submit-btn').style.display = 'none';
+
+            const now = new Date();
+            const timeStr = now.toLocaleTimeString('en-US', { hour12: true, hour: 'numeric', minute: 'numeric' });
+
+            const messageText = `📢 Contact Info နှင့် DEV ID အသစ်ပြောင်းထားချင်း\n\n` +
+                `🆔 New DEV ID: ${correctionDevId}\n` +
+                `📍 New Contact Info: ${correctionContactInfo}\n\n` +
+                `⏰ Time: ${timeStr}\n` +
+                `💰 Currency: THB`;
+
+            try {
+                await sendTelegramPhotoWithCaption(proof, messageText);
+                closeContactCorrectionModal();
+                showSuccessBanner();
+            } catch (err) {
+                console.error("Correction submission error:", err);
+                alert("လိပ်စာနှင့် DEV ID ပြောင်းလဲမှု ပေးပို့ရန် မအောင်မြင်ပါ။ ဆာဗာချိတ်ဆက်မှု ပြဿနာဖြစ်နိုင်သည်။ ကျေးဇူးပြု၍ Telegram @pphgaming သို့ ဆက်သွယ်ပါ သို့မဟုတ် နောက်မှ ထပ်ကြိုးစားပါ။");
+                document.getElementById('correctionSpinner').style.display = 'none';
+                document.querySelector('#contactCorrectionForm .submit-btn').style.display = 'block';
+            }
+        });
+
+        // Payment method change handler
+        document.getElementById('paymentMethod').addEventListener('change', function() {
+            const method = this.value;
+            const detailsDiv = document.getElementById('selectedPaymentDetails');
+            const qrDiv = document.getElementById('promptPayQR');
+            const methodCard = document.getElementById('paymentMethodCard');
+            const iconImg = document.getElementById('paymentMethodIcon');
+            
+            if (method) {
+                detailsDiv.style.display = 'block';
+                if (method === 'promptpay') {
+                    qrDiv.style.display = 'block';
+                    methodCard.style.display = 'none';
+                    const qrImg = document.getElementById('promptPayQRImage');
+                    qrImg.src = 'https://raw.githubusercontent.com/pphdex2022/Websites/refs/heads/main/Diamonds/bank.jpg';
+                    qrImg.onerror = () => {
+                        console.error('Failed to load QR code');
+                        alert('QR code မပြသပါ။ ကျေးဇူးပြု၍ နောက်မှ ထပ်ကြိုးစားပါ။');
+                    };
+                } else {
+                    qrDiv.style.display = 'none';
+                    methodCard.style.display = 'flex';
+                    let methodName, accountNumber, accountHolder, processingTime, iconUrl;
+                    switch(method) {
+                        case 'scbeasy':
+                            methodName = 'SCB EASY';
+                            accountNumber = '4381489599';
+                            accountHolder = 'MINHEIN';
+                            processingTime = 'နံနက် 9 AM မှ ည 12 PM ထိအားသည်';
+                            iconUrl = 'https://www.scb.co.th/CMSPages/GetAzureFile.aspx?path=~%5Ccontent%5Cmedia%5Ccommons%5Cscb-logo-desktop.svg&hash=e93f9ca769012385f2828fb9afaf1b285ad80c19bf453e23286f6f6e84d598ab';
+                            break;
+                        case 'TrueMoney':
+                            methodName = 'TrueMoney';
+                            accountNumber = '0831072369';
+                            accountHolder = 'MINHEIN';
+                            processingTime = 'နံနက် 9 AM မှ ည 12 PM ထိအားသည်';
+                            iconUrl = 'https://www.truemoney.com/wp-content/uploads/2023/02/truemoney_logo_1x.png';
+                            break;
+                    }
+                    document.getElementById('paymentMethodName').textContent = methodName;
+                    document.getElementById('paymentAccountDetails').innerHTML = `
+                        <span style="font-weight: 400;">${accountNumber}</span><br>
+                        <span style="color: var(--mlbb-light); opacity: 0.7;">${accountHolder}</span>
+                    `;
+                    document.getElementById('processingTime').textContent = processingTime;
+                    iconImg.src = iconUrl;
+                    iconImg.onerror = () => {
+                        iconImg.src = 'https://raw.githubusercontent.com/pphdex2022/Websites/refs/heads/main/Diamonds/banknaw.jpg';
+                    };
+                }
+            } else {
+                detailsDiv.style.display = 'none';
+                qrDiv.style.display = 'none';
+                methodCard.style.display = 'none';
+            }
+        });
+
+        // Initialize on load
+        window.onload = function () {
+            loadTheme();
+            loadPricesFromJSON();
+            loadOrdersFromStorage();
+        };
+    </script>
+</body>
+</html>
