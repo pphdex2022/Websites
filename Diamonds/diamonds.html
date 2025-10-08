@@ -26,7 +26,6 @@
             --android-font: 'Roboto', 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
         }
 
-        /* Dark Mode */
         [data-theme="dark"] {
             --mlbb-dark: #2c2c2e;
             --mlbb-darker: #1c1c1e;
@@ -55,7 +54,6 @@
             transition: var(--transition);
         }
 
-        /* Header */
         .header {
             background: var(--mlbb-dark);
             padding: 0.8rem 1rem;
@@ -77,7 +75,6 @@
             letter-spacing: 0.3px;
         }
 
-        /* Dark Mode Toggle */
         .theme-toggle {
             position: absolute;
             top: 1rem;
@@ -95,7 +92,6 @@
             box-shadow: var(--card-shadow-inset);
         }
 
-        /* Currency Info */
         .currency-info {
             text-align: center;
             padding: 0.8rem;
@@ -108,7 +104,6 @@
             margin: 0.5rem 1rem;
         }
 
-        /* Diamond Grid */
         .diamond-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -145,7 +140,6 @@
             transform: scale(0.97);
         }
 
-        /* Badges */
         .badge {
             position: absolute;
             top: 6px;
@@ -162,10 +156,10 @@
             box-shadow: var(--card-shadow);
         }
 
-        /* Diamond Content */
         .diamond-icon {
             margin-bottom: 0.5rem;
         }
+
         .diamond-img {
             width: 50px;
             height: 50px;
@@ -178,7 +172,7 @@
             transform: scale(1.2);
         }
 
-        .header-img {
+        .diamond-section-img {
             width: 20px;
             height: 20px;
             object-fit: contain;
@@ -204,61 +198,6 @@
             box-shadow: var(--card-shadow-inset);
         }
 
-        /* Modal Styles */
-        .modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            z-index: 1000;
-            display: none;
-            overflow-y: auto;
-            padding: 0.8rem;
-            -webkit-overflow-scrolling: touch;
-        }
-
-        .modal-content {
-            background: var(--mlbb-darker);
-            border-radius: var(--border-radius);
-            width: 90%;
-            max-width: 320px;
-            margin: auto;
-            padding: 1rem;
-            box-shadow: var(--card-shadow);
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            animation: modalOpen 0.3s ease-out;
-            color: var(--mlbb-light);
-            z-index: 1001;
-        }
-
-        .modal-title {
-            font-size: 1.1rem;
-            margin-bottom: 0.8rem;
-            text-align: center;
-            color: var(--mlbb-primary);
-            font-weight: 600;
-        }
-
-        .close-btn {
-            position: absolute;
-            top: 10px;
-            right: 15px;
-            font-size: 1.5rem;
-            color: var(--mlbb-light);
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .close-btn:hover {
-            color: var(--mlbb-primary);
-        }
-
-        /* Form Elements */
         .form-group {
             margin-bottom: 0.8rem;
         }
@@ -288,7 +227,6 @@
             box-shadow: var(--card-shadow);
         }
 
-        /* File Upload */
         .file-upload {
             display: flex;
             align-items: center;
@@ -327,7 +265,6 @@
             display: none;
         }
 
-        /* Payment Methods */
         .payment-info {
             background: var(--mlbb-darker);
             border-radius: 6px;
@@ -336,43 +273,74 @@
             box-shadow: var(--card-shadow-inset);
         }
 
-        .payment-method {
+        .payment-select-wrapper {
+            position: relative;
+        }
+
+        .payment-select-wrapper select {
+            background: var(--mlbb-darker) !important;
+            color: var(--mlbb-light) !important;
+            border: none !important;
+            box-shadow: var(--card-shadow-inset);
+            appearance: none;
+            -webkit-appearance: none;
+            padding-right: 2rem;
+        }
+
+        .payment-select-wrapper .select-arrow {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            pointer-events: none;
+        }
+
+        .payment-select-wrapper .select-arrow i {
+            color: var(--mlbb-primary);
+        }
+
+        .payment-method-card {
+            color: var(--mlbb-light);
             display: flex;
             align-items: center;
-            margin-bottom: 0.6rem;
-            padding-bottom: 0.6rem;
-            border-bottom: 1px solid rgba(30, 136, 229, 0.1);
         }
 
-        .payment-method:last-child {
-            margin-bottom: 0;
-            padding价值观: 0;
-            border-bottom: none;
+        .payment-icon-circle {
+            width: 40px;
+            height: 40px;
+            background: var(--mlbb-darker);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 0.8rem;
+            flex-shrink: 0;
+            box-shadow: var(--card-shadow);
         }
 
-        .payment-icon {
-            font-size: 1.1rem;
-            margin-right: 0.7rem;
-            color: var(--mlbb-primary);
-            min-width: 22px;
+        .payment-icon-circle img {
+            width: 24px;
+            height: 24px;
+            object-fit: contain;
         }
 
-        .payment-method strong {
+        #selectedPaymentDetails {
+            background: var(--mlbb-darker);
+            padding: 0.6rem;
+            border-radius: 6px;
+            box-shadow: var(--card-shadow-inset);
+            margin-top: 1rem;
+        }
+
+        #promptPayQR img {
+            width: 150px;
+            height: auto;
+            border-radius: 6px;
+            box-shadow: var(--card-shadow);
             display: block;
-            margin-bottom: 0.1rem;
-            font-size: 0.85rem;
-            color: var(--mlbb-light);
+            margin: 0 auto;
         }
 
-        .payment-method small {
-            display: block;
-            font-size: 0.75rem;
-            color: var(--mlbb-light);
-            opacity: 0.7;
-            line-height: 1.4;
-        }
-
-        /* Buttons */
         .submit-btn {
             width: 100%;
             padding: 0.8rem;
@@ -401,7 +369,56 @@
             margin-right: 6px;
         }
 
-        /* Bottom Navigation */
+        .spinner {
+            display: none;
+            width: 28px;
+            height: 28px;
+            margin: 0.8rem auto;
+            border: 2px solid rgba(30, 136, 229, 0.1);
+            border-radius: 50%;
+            border-top: 2px solid var(--mlbb-primary);
+            border-right: 2px solid var(--mlbb-secondary);
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .success-banner {
+            background: var(--mlbb-darker);
+            color: var(--mlbb-light);
+            text-align: center;
+            padding: 10px;
+            border-radius: 6px;
+            font-weight: 600;
+            animation: fadeIn 0.3s ease-out;
+            position: fixed;
+            bottom: 70px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            width: 90%;
+            max-width: 320px;
+            box-shadow: var(--card-shadow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+        }
+
+        .success-banner i {
+            margin-right: 8px;
+            font-size: 1.1rem;
+            color: var(--mlbb-green);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px) translateX(-50%); }
+            to { opacity: 1; transform: translateY(0) translateX(-50%); }
+        }
+
         .bottom-nav {
             position: fixed;
             bottom: 0;
@@ -451,59 +468,6 @@
             margin-bottom: 3px;
         }
 
-        /* Loading Spinner */
-        .spinner {
-            display: none;
-            width: 28px;
-            height: 28px;
-            margin: 0.8rem auto;
-            border: 2px solid rgba(30, 136, 229, 0.1);
-            border-radius: 50%;
-            border-top: 2px solid var(--mlbb-primary);
-            border-right: 2px solid var(--mlbb-secondary);
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* Success Notification */
-        .success-banner {
-            background: var(--mlbb-darker);
-            color: var(--mlbb-light);
-            text-align: center;
-            padding: 10px;
-            border-radius: 6px;
-            font-weight: 600;
-            animation: fadeIn 0.3s ease-out;
-            position: fixed;
-            bottom: 70px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 1000;
-            width: 90%;
-            max-width: 320px;
-            box-shadow: var(--card-shadow);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.85rem;
-        }
-
-        .success-banner i {
-            margin-right: 8px;
-            font-size: 1.1rem;
-            color: var(--mlbb-green);
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px) translateX(-50%); }
-            to { opacity: 1; transform: translateY(0) translateX(-50%); }
-        }
-
-        /* Orders Section */
         .orders-container {
             padding: 0.8rem;
             display: none;
@@ -567,7 +531,6 @@
             opacity: 0.5;
         }
 
-        /* Help Section */
         .help-item {
             background: var(--mlbb-darker);
             border-radius: var(--border-radius);
@@ -607,7 +570,6 @@
             font-size: 0.85rem;
         }
 
-        /* Floating Ball */
         .floating-ball {
             position: fixed;
             bottom: 80px;
@@ -645,7 +607,6 @@
             50% { transform: translateY(-10px); }
         }
 
-        /* Responsive Adjustments */
         @media (max-width: 350px) {
             .diamond-grid {
                 grid-template-columns: 1fr;
@@ -654,17 +615,11 @@
                 min-height: 110px;
                 padding: 0.8rem 0.5rem;
             }
-            .modal-content {
-                padding: 0.8rem;
-            }
         }
 
         @media (min-width: 400px) {
             .diamond-grid {
                 grid-template-columns: repeat(2, 1fr);
-            }
-            .modal-content {
-                max-width: 320px;
             }
         }
 
@@ -672,12 +627,8 @@
             .diamond-grid {
                 grid-template-columns: repeat(3, 1fr);
             }
-            .modal-content {
-                max-width: 350px;
-            }
         }
 
-        /* Scrollbar */
         ::-webkit-scrollbar {
             width: 5px;
         }
@@ -691,16 +642,9 @@
             border-radius: 3px;
         }
 
-        /* Input Focus */
         input, textarea, select {
             -webkit-tap-highlight-color: rgba(0,0,0,0);
             -webkit-user-select: text;
-        }
-
-        /* Modal Animations */
-        @keyframes modalOpen {
-            from { opacity: 0; transform: translate(-50%, -60%); }
-            to { opacity: 1; transform: translate(-50%, -50%); }
         }
 
         @keyframes fadeInGrid {
@@ -708,40 +652,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Payment select styles */
-        .payment-select-wrapper {
-            position: relative;
-        }
-
-        .payment-select-wrapper select {
-            background: var(--mlbb-darker) !important;
-            color: var(--mlbb-light) !important;
-            border: none !important;
-            box-shadow: var(--card-shadow-inset);
-            appearance: none;
-            -webkit-appearance: none;
-            padding-right: 2rem;
-        }
-
-        .payment-select-wrapper .select-arrow {
-            position: absolute;
-            right: 10px;
-            top: 50%;
-            transform: translateY(-50%);
-            pointer-events: none;
-        }
-
-        .payment-select-wrapper .select-arrow i {
-            color: var(--mlbb-primary);
-        }
-
-        .payment-method-card {
-            color: var(--mlbb-light);
-            display: flex;
-            align-items: center;
-        }
-
-        /* Form placeholders */
         ::placeholder {
             color: var(--mlbb-light) !important;
             opacity: 0.6;
@@ -756,42 +666,6 @@
             color: var(--mlbb-light) !important;
             opacity: 0.6;
         }
-
-        /* Payment details styling */
-        .payment-icon-circle {
-            width: 40px;
-            height: 40px;
-            background: var(--mlbb-darker);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 0.8rem;
-            flex-shrink: 0;
-            box-shadow: var(--card-shadow);
-        }
-
-        .payment-icon-circle img {
-            width: 24px;
-            height: 24px;
-            object-fit: contain;
-        }
-
-        #selectedPaymentDetails {
-            background: var(--mlbb-darker);
-            padding: 0.6rem;
-            border-radius: 6px;
-            box-shadow: var(--card-shadow-inset);
-        }
-
-        #promptPayQR img {
-            width: 150px;
-            height: auto;
-            border-radius: 6px;
-            box-shadow: var(--card-shadow);
-            display: block;
-            margin: 0 auto;
-        }
     </style>
 </head>
 <body data-theme="light">
@@ -802,111 +676,178 @@
             <i class="fas fa-moon"></i>
         </div>
     </div>
-   <!-- Main Content -->
+
+    <!-- Currency Info -->
+    <div class="currency-info">
+        Currency: THB (฿)
+    </div>
+
+    <!-- Main Content -->
     <div id="mlbbContent">
         <!-- Regular Diamonds Section -->
         <div style="padding: 0 1rem; margin-top: 1rem;">
             <h3 style="color: var(--mlbb-accent); border-bottom: 2px solid var(--mlbb-secondary); padding-bottom: 0.5rem; display: flex; align-items: center;">
                 <img src="https://img.cocodp.com/images/admin/setting/jnLpMpZhpThMbBQCR41.jpg" alt="Diamond Icon" class="diamond-section-img" onerror="this.src='https://img.cocodp.com/images/admin/setting/jnLpMpZhpThMbBQCR41.jpg';">
-              MLBB Diamond များ
+                MLBB Diamond များ
             </h3>
+            <div style="margin-top: 1rem; padding: 0 1rem;">
+                <div class="payment-info" id="paymentInfo">
+                    <div class="form-group">
+                        <div class="payment-select-wrapper">
+                            <select id="paymentMethod" class="form-control" required>
+                                <option value="" selected disabled>ငွေလွှဲနည်းလမ်း ရွေးပါ</option>
+                                <option value="scbeasy">SCB EASY - 4381489599 (9 AM - 12 PM)</option>
+                                <option value="TrueMoney">TrueMoney - 0831072369 (9 AM - 12 PM)</option>
+                                <option value="promptpay">Prompt Pay (QR Code)</option>
+                            </select>
+                            <div class="select-arrow">
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="selectedPaymentDetails" style="display: none;">
+                        <div id="promptPayQR" style="display: none; text-align: center; margin-top: 1rem;">
+                            <img id="promptPayQRImage" src="https://raw.githubusercontent.com/pphdex2022/Websites/refs/heads/main/Diamonds/bank.jpg" alt="Prompt Pay QR Code">
+                        </div>
+                        <div id="paymentMethodCard" style="display: none;" class="payment-method-card">
+                            <div class="payment-icon-circle">
+                                <img id="paymentMethodIcon" src="" alt="Payment Icon">
+                            </div>
+                            <div>
+                                <div id="paymentMethodName"></div>
+                                <div id="paymentAccountDetails"></div>
+                                <div>
+                                    <i class="fas fa-clock"></i>
+                                    <span id="processingTime"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <form id="purchaseForm">
+                    <input type="hidden" id="selectedPackage">
+                    <input type="hidden" id="gameType">
+                    <div class="form-group">
+                        <label for="gameId" id="gameIdLabel">ဂိမ်း ID</label>
+                        <input type="text" id="gameId" class="form-control" placeholder="သင့်ဂိမ်း ID ထည့်ပါ" required>
+                    </div>
+                    <div class="form-group" id="serverGroup">
+                        <label for="serverId">ဆာဗာ ID</label>
+                        <input type="text" id="serverId" class="form-control" placeholder="သင့်ဆာဗာ ID ထည့်ပါ" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="paymentProof">ငွေပေးချေမှု အတည်ပြုချက် (ဓာတ်ပုံ)</label>
+                        <div class="file-upload">
+                            <label for="paymentProof" class="file-upload-btn">
+                                <i class="fas fa-cloud-upload-alt"></i><br>
+                                ဖိုင်ရွေးရန်
+                            </label>
+                            <input type="file" id="paymentProof" accept="image/*" required>
+                            <span id="fileUploadLabel" style="margin-left: 0.5rem; font-size: 0.85rem;"></span>
+                        </div>
+                    </div>
+                    <div class="spinner" id="spinner"></div>
+                    <button type="submit" class="submit-btn" id="submitBtn">
+                        <i class="fas fa-paper-plane"></i> အော်ဒါတင်မည်
+                    </button>
+                </form>
+            </div>
         </div>
-        
         
         <!-- Regular Diamonds -->
         <div class="diamond-grid">
-            <div class="diamond-card" onclick="openModal('86 Diamonds', 'mlbb')">
+            <div class="diamond-card" onclick="selectPackage('86 Diamonds', 'mlbb')">
                 <div class="diamond-icon">
                     <img src="https://raw.githubusercontent.com/pphdex2022/Websites/refs/heads/main/Diamonds/dai1.png" alt="Diamond Icon" class="diamond-img">
                 </div>
                 <div class="diamond-amount">86 Diamonds</div>
                 <div class="diamond-price">Loading...</div>
             </div>
-            <div class="diamond-card" onclick="openModal('172 Diamonds', 'mlbb')">
+            <div class="diamond-card" onclick="selectPackage('172 Diamonds', 'mlbb')">
                 <div class="diamond-icon">
                     <img src="https://raw.githubusercontent.com/pphdex2022/Websites/refs/heads/main/Diamonds/dai1.png" alt="Diamond Icon" class="diamond-img">
                 </div>
                 <div class="diamond-amount">172 Diamonds</div>
                 <div class="diamond-price">Loading...</div>
             </div>
-            <div class="diamond-card" onclick="openModal('257 Diamonds', 'mlbb')">
+            <div class="diamond-card" onclick="selectPackage('257 Diamonds', 'mlbb')">
                 <div class="diamond-icon">
                     <img src="https://raw.githubusercontent.com/pphdex2022/Websites/refs/heads/main/Diamonds/dai1.png" alt="Diamond Icon" class="diamond-img">
                 </div>
                 <div class="diamond-amount">257 Diamonds</div>
                 <div class="diamond-price">Loading...</div>
             </div>
-            <div class="diamond-card" onclick="openModal('343 Diamonds', 'mlbb')">
+            <div class="diamond-card" onclick="selectPackage('343 Diamonds', 'mlbb')">
                 <div class="diamond-icon">
                     <img src="https://raw.githubusercontent.com/pphdex2022/Websites/refs/heads/main/Diamonds/dai1.png" alt="Diamond Icon" class="diamond-img">
                 </div>
                 <div class="diamond-amount">343 Diamonds</div>
                 <div class="diamond-price">Loading...</div>
             </div>
-            <div class="diamond-card" onclick="openModal('429 Diamonds', 'mlbb')">
+            <div class="diamond-card" onclick="selectPackage('429 Diamonds', 'mlbb')">
                 <div class="diamond-icon">
                     <img src="https://raw.githubusercontent.com/pphdex2022/Websites/refs/heads/main/Diamonds/dai1.png" alt="Diamond Icon" class="diamond-img">
                 </div>
                 <div class="diamond-amount">429 Diamonds</div>
                 <div class="diamond-price">Loading...</div>
             </div>
-            <div class="diamond-card" onclick="openModal('514 Diamonds', 'mlbb')">
+            <div class="diamond-card" onclick="selectPackage('514 Diamonds', 'mlbb')">
                 <div class="diamond-icon">
                     <img src="https://raw.githubusercontent.com/pphdex2022/Websites/refs/heads/main/Diamonds/dai1.png" alt="Diamond Icon" class="diamond-img">
                 </div>
                 <div class="diamond-amount">514 Diamonds</div>
                 <div class="diamond-price">Loading...</div>
             </div>
-            <div class="diamond-card" onclick="openModal('600 Diamonds', 'mlbb')">
+            <div class="diamond-card" onclick="selectPackage('600 Diamonds', 'mlbb')">
                 <div class="diamond-icon">
                     <img src="https://raw.githubusercontent.com/pphdex2022/Websites/refs/heads/main/Diamonds/dai1.png" alt="Diamond Icon" class="diamond-img">
                 </div>
                 <div class="diamond-amount">600 Diamonds</div>
                 <div class="diamond-price">Loading...</div>
             </div>
-            <div class="diamond-card" onclick="openModal('706 Diamonds', 'mlbb')">
+            <div class="diamond-card" onclick="selectPackage('706 Diamonds', 'mlbb')">
                 <div class="diamond-icon">
                     <img src="https://raw.githubusercontent.com/pphdex2022/Websites/refs/heads/main/Diamonds/dai1.png" alt="Diamond Icon" class="diamond-img">
                 </div>
                 <div class="diamond-amount">706 Diamonds</div>
                 <div class="diamond-price">Loading...</div>
             </div>
-            <div class="diamond-card" onclick="openModal('1049 Diamonds', 'mlbb')">
+            <div class="diamond-card" onclick="selectPackage('1049 Diamonds', 'mlbb')">
                 <div class="diamond-icon">
                     <img src="https://raw.githubusercontent.com/pphdex2022/Websites/refs/heads/main/Diamonds/dai1.png" alt="Diamond Icon" class="diamond-img">
                 </div>
                 <div class="diamond-amount">1049 Diamonds</div>
                 <div class="diamond-price">Loading...</div>
             </div>
-            <div class="diamond-card" onclick="openModal('1135 Diamonds', 'mlbb')">
+            <div class="diamond-card" onclick="selectPackage('1135 Diamonds', 'mlbb')">
                 <div class="diamond-icon">
                     <img src="https://raw.githubusercontent.com/pphdex2022/Websites/refs/heads/main/Diamonds/dai1.png" alt="Diamond Icon" class="diamond-img">
                 </div>
                 <div class="diamond-amount">1135 Diamonds</div>
                 <div class="diamond-price">Loading...</div>
             </div>
-            <div class="diamond-card" onclick="openModal('2195 Diamonds', 'mlbb')">
+            <div class="diamond-card" onclick="selectPackage('2195 Diamonds', 'mlbb')">
                 <div class="diamond-icon">
                     <img src="https://raw.githubusercontent.com/pphdex2022/Websites/refs/heads/main/Diamonds/dai1.png" alt="Diamond Icon" class="diamond-img">
                 </div>
                 <div class="diamond-amount">2195 Diamonds</div>
                 <div class="diamond-price">Loading...</div>
             </div>
-            <div class="diamond-card" onclick="openModal('3688 Diamonds', 'mlbb')">
+            <div class="diamond-card" onclick="selectPackage('3688 Diamonds', 'mlbb')">
                 <div class="diamond-icon">
                     <img src="https://raw.githubusercontent.com/pphdex2022/Websites/refs/heads/main/Diamonds/dai1.png" alt="Diamond Icon" class="diamond-img">
                 </div>
                 <div class="diamond-amount">3688 Diamonds</div>
                 <div class="diamond-price">Loading...</div>
             </div>
-            <div class="diamond-card" onclick="openModal('5532 Diamonds', 'mlbb')">
+            <div class="diamond-card" onclick="selectPackage('5532 Diamonds', 'mlbb')">
                 <div class="diamond-icon">
                     <img src="https://raw.githubusercontent.com/pphdex2022/Websites/refs/heads/main/Diamonds/dai1.png" alt="Diamond Icon" class="diamond-img">
                 </div>
                 <div class="diamond-amount">5532 Diamonds</div>
                 <div class="diamond-price">Loading...</div>
             </div>
-            <div class="diamond-card" onclick="openModal('9288 Diamonds', 'mlbb')">
+            <div class="diamond-card" onclick="selectPackage('9288 Diamonds', 'mlbb')">
                 <div class="diamond-icon">
                     <img src="https://raw.githubusercontent.com/pphdex2022/Websites/refs/heads/main/Diamonds/dai1.png" alt="Diamond Icon" class="diamond-img">
                 </div>
@@ -918,12 +859,12 @@
         <!-- Pass Section -->
         <div style="padding: 0 1rem; margin-top: 2rem;">
             <h3 style="display: flex; align-items: center;">
-                <img src="https://raw.githubusercontent.com/pphdex2022/Websites/refs/heads/main/Diamonds/dai1.png" alt="Pass Icon" class="header-img">
+                <img src="https://raw.githubusercontent.com/pphdex2022/Websites/refs/heads/main/Diamonds/dai1.png" alt="Pass Icon" class="diamond-section-img">
                 Pass များ
             </h3>
         </div>
         <div class="diamond-grid">
-            <div class="diamond-card" onclick="openModal('Weekly Pass', 'mlbb')">
+            <div class="diamond-card" onclick="selectPackage('Weekly Pass', 'mlbb')">
                 <div class="badge">PASS</div>
                 <div class="diamond-icon">
                     <img src="https://akmweb.youngjoygame.com/web/mobapay/image/602448ac388dd86cd3d0c0bb4714bc57.png" alt="Pass Icon" class="diamond-img">
@@ -931,7 +872,7 @@
                 <div class="diamond-amount">Weekly Pass</div>
                 <div class="diamond-price">Loading...</div>
             </div>
-            <div class="diamond-card" onclick="openModal('Twilight Pass', 'mlbb')">
+            <div class="diamond-card" onclick="selectPackage('Twilight Pass', 'mlbb')">
                 <div class="badge">PASS</div>
                 <div class="diamond-icon">
                     <img src="https://cdn1.codashop.com/S/content/common/images/denom-image/MLBB/100x100/TwilightPass_MLBB.png" alt="Pass Icon" class="diamond-img">
@@ -941,105 +882,13 @@
             </div>
         </div>
     </div>
-        
+
     <!-- Orders Section -->
     <div id="ordersContent" class="orders-container">
         <div class="no-orders">
             <i class="fas fa-clipboard-list"></i><br>
             မှတ်တမ်းမရှိသေးပါ
         </div>
-    </div>
-
-    <!-- Purchase Modal -->
-    <div id="purchaseModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal()">&times;</span>
-            <h2 class="modal-title" id="modalTitle">Diamonds ဝယ်ယူရန်</h2>
-            
-            <div class="payment-info" id="paymentInfo">
-                <div class="form-group">
-                    <div class="payment-select-wrapper">
-                        <select id="paymentMethod" class="form-control" required>
-                            <option value="" selected disabled>ငွေလွှဲနည်းလမ်း ရွေးပါ</option>
-                            <option value="scbeasy">SCB EASY - 4381489599 (9 AM - 12 PM)</option>
-                            <option value="TrueMoney">TrueMoney - 0831072369 (9 AM - 12 PM)</option>
-                            <option value="promptpay">Prompt Pay (QR Code) (9 AM - 12 PM)</option>
-                        </select>
-                        <div class="select-arrow">
-                            <i class="fas fa-chevron-down"></i>
-                        </div>
-                    </div>
-                </div>
-                
-                <div id="selectedPaymentDetails" style="display: none;">
-                    <div id="promptPayQR" style="display: none; text-align: center; margin-top: 1rem;">
-                        <img id="promptPayQRImage" src="https://raw.githubusercontent.com/pphdex2022/Websites/refs/heads/main/Diamonds/bank.jpg" alt="Prompt Pay QR Code">
-                    </div>
-                    <div id="paymentMethodCard" style="display: none;" class="payment-method-card">
-                        <div class="payment-icon-circle">
-                            <img id="paymentMethodIcon" src="" alt="Payment Icon" style="width: 24px; height: 24px; object-fit: contain;">
-                        </div>
-                        <div>
-                            <div id="paymentMethodName"></div>
-                            <div id="paymentAccountDetails"></div>
-                            <div>
-                                <i class="fas fa-clock"></i>
-                                <span id="processingTime"></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <form id="purchaseForm">
-                <input type="hidden" id="selectedPackage">
-                <input type="hidden" id="gameType">
-                
-                <div class="form-group">
-                    <label for="gameId" id="gameIdLabel">ဂိမ်း ID</label>
-                    <input type="text" id="gameId" class="form-control" placeholder="သင့်ဂိမ်း ID ထည့်ပါ" required>
-                </div>
-                
-                <div class="form-group" id="serverGroup">
-                    <label for="serverId">ဆာဗာ ID</label>
-                    <input type="text" id="serverId" class="form-control" placeholder="သင့်ဆာဗာ ID ထည့်ပါ" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="paymentProof">ငွေပေးချေမှု အတည်ပြုချက် (ဓာတ်ပုံ)</label>
-                    <div class="file-upload">
-                        <label for="paymentProof" class="file-upload-btn">
-                            <i class="fas fa-cloud-upload-alt"></i><br>
-                            ဖိုင်ရွေးရန်
-                        </label>
-                        <input type="file" id="paymentProof" accept="image/*" required>
-                        <span id="fileUploadLabel" style="margin-left: 0.5rem; font-size: 0.85rem;"></span>
-                    </div>
-                </div>
-                
-                <div class="spinner" id="spinner"></div>
-                
-                <button type="submit" class="submit-btn" id="submitBtn">
-                    <i class="fas fa-paper-plane"></i> အော်ဒါတင်မည်
-                </button>
-            </form>
-        </div>
-    </div>
-
-    <!-- Bottom Navigation -->
-    <div class="bottom-nav">
-        <a href="#" class="nav-item active" onclick="showHome()">
-            <i class="fas fa-gem"></i>
-            <span>Diamonds</span>
-        </a>
-        <a href="#" class="nav-item" onclick="showOrders()">
-            <i class="fas fa-clipboard-list"></i>
-            <span>မှတ်တမ်း</span>
-        </a>
-        <a href="#" class="nav-item" onclick="showHelp()">
-            <i class="fas fa-question-circle"></i>
-            <span>Help</span>
-        </a>
     </div>
 
     <!-- Help Section -->
@@ -1066,18 +915,15 @@
         <div class="modal-content">
             <span class="close-btn" onclick="closeIdCorrectionModal()">&times;</span>
             <h2 class="modal-title">ID မှားချင်းဖြေရှင်းချက်</h2>
-            
             <form id="idCorrectionForm">
                 <div class="form-group">
                     <label for="correctionGameId">ဂိမ်း ID (အသစ်)</label>
                     <input type="text" id="correctionGameId" class="form-control" placeholder="ဂိမ်း ID အသစ်ထည့်ပါ" required>
                 </div>
-                
                 <div class="form-group">
                     <label for="correctionServerId">ဆာဗာ ID (အသစ်)</label>
                     <input type="text" id="correctionServerId" class="form-control" placeholder="ဆာဗာ ID အသစ်ထည့်ပါ" required>
                 </div>
-                
                 <div class="form-group">
                     <label for="correctionProof">အော်ဒါမှတ်တန်းပုံ</label>
                     <div class="file-upload">
@@ -1089,9 +935,7 @@
                         <span id="correctionFileLabel" style="margin-left: 0.5rem; font-size: 0.85rem;"></span>
                     </div>
                 </div>
-                
                 <div class="spinner" id="correctionSpinner"></div>
-                
                 <button type="submit" class="submit-btn">
                     <i class="fas fa-paper-plane"></i> ပေးပို့မည်
                 </button>
@@ -1104,13 +948,12 @@
         <div class="modal-content">
             <span class="close-btn" onclick="closeDiamondNotReceivedModal()">&times;</span>
             <h2 class="modal-title">Diamond မရောက်ချင်း</h2>
-            
             <div class="payment-info">
                 <p>
                     Diamond မရောက်ချင်းမှာ<br>
                     အော်ဒါတင်ထားတဲ့ Game ID သို့မဟုတ်<br>
                     Server ID မှားချင်း တို့ကြောင့်ဖြစ်သည်<br>
-                    အော်ဒါမှတ်တန်းတွင် စစ်‌ဆေးပါ
+                    အော်ဒါမှတ်တန်းတွင် စစ်ဆေးပါ
                 </p>
                 <p>
                     အကုန်မှန်ပါသော်လည်း မရောက်ပါက<br>
@@ -1120,7 +963,6 @@
                     Telegram @pphgaming
                 </p>
             </div>
-            
             <button class="submit-btn" onclick="closeDiamondNotReceivedModal()">
                 <i class="fas fa-check"></i> နားလည်ပါသည်
             </button>
@@ -1128,8 +970,24 @@
     </div>
 
     <!-- Floating Ball -->
-    <div class="floating-ball" onclick="window.open('https://t.me/pphgaming', '_blank')">
+    <div class="floating-ball" onclick="window.open('https://t.me/pphgamingshop', '_blank')">
         <i class="fas fa-comment"></i>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <div class="bottom-nav">
+        <a href="#" class="nav-item active" onclick="showHome()">
+            <i class="fas fa-gem"></i>
+            <span>Diamonds</span>
+        </a>
+        <a href="#" class="nav-item" onclick="showOrders()">
+            <i class="fas fa-clipboard-list"></i>
+            <span>မှတ်တမ်း</span>
+        </a>
+        <a href="#" class="nav-item" onclick="showHelp()">
+            <i class="fas fa-question-circle"></i>
+            <span>Help</span>
+        </a>
     </div>
 
     <script>
@@ -1138,7 +996,7 @@
         let currentGame = 'mlbb';
         let currentCurrency = 'THB';
 
-        // Fallback prices for THB only
+        // Fallback prices for THB
         const fallbackPrices = {
             THB: [
                 { dia: 86, price: 45 },
@@ -1180,7 +1038,6 @@
         // Fetch prices from JSON
         function loadPricesFromJSON() {
             document.querySelectorAll('.diamond-price').forEach(price => price.textContent = 'Loading...');
-
             fetch('https://raw.githubusercontent.com/pphdex2022/Websites/refs/heads/main/Diamonds/MlbbDia.json')
                 .then(response => {
                     if (!response.ok) throw new Error('Network response was not ok');
@@ -1211,41 +1068,23 @@
             });
         }
 
-        // Open purchase modal
-        function openModal(packageName, gameType) {
+        // Select package
+        function selectPackage(packageName, gameType) {
             document.getElementById('selectedPackage').value = packageName;
             document.getElementById('gameType').value = gameType;
-            document.getElementById('modalTitle').textContent = packageName + ' ဝယ်ယူရန်';
-            document.getElementById('serverGroup').style.display = 'block';
             document.getElementById('gameIdLabel').textContent = 'ဂိမ်း ID';
             document.getElementById('gameId').placeholder = 'သင့်ဂိမ်း ID ထည့်ပါ';
-            document.getElementById('purchaseModal').style.display = 'block';
-            document.body.style.overflow = 'hidden';
-            document.getElementById('spinner').style.display = 'none';
-            document.getElementById('submitBtn').style.display = 'block';
-            document.getElementById('purchaseForm').reset();
-            document.getElementById('paymentMethod').value = '';
-            document.getElementById('selectedPaymentDetails').style.display = 'none';
-            document.getElementById('promptPayQR').style.display = 'none';
-            document.getElementById('paymentMethodCard').style.display = 'none';
-            document.getElementById('fileUploadLabel').textContent = '';
-            document.getElementById('paymentProof').value = ''; // Reset file input
+            document.getElementById('serverGroup').style.display = 'block';
+            document.getElementById('purchaseForm').scrollIntoView({ behavior: 'smooth' });
         }
 
-        // Close modal
-        function closeModal() {
-            document.getElementById('purchaseModal').style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-
-        // Send to Telegram directly
+        // Send to Telegram
         async function sendTelegramPhotoWithCaption(file, caption) {
             const formData = new FormData();
             formData.append('chat_id', TELEGRAM_GROUP_ID);
             formData.append('photo', file);
             formData.append('caption', caption);
             formData.append('parse_mode', 'HTML');
-
             try {
                 const response = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendPhoto`, {
                     method: 'POST',
@@ -1266,8 +1105,7 @@
         // Submit handler
         document.getElementById('purchaseForm').addEventListener('submit', async function(e) {
             e.preventDefault();
-            console.log('Form submission triggered'); // Debug log
-
+            console.log('Form submission triggered');
             const packageName = document.getElementById('selectedPackage').value;
             const gameType = document.getElementById('gameType').value;
             const gameId = document.getElementById('gameId').value.trim();
@@ -1275,7 +1113,12 @@
             const paymentProof = document.getElementById('paymentProof').files[0];
             const paymentMethod = document.getElementById('paymentMethod').value;
 
-            console.log('Form data:', { packageName, gameType, gameId, serverId, paymentMethod, paymentProof }); // Debug log
+            console.log('Form data:', { packageName, gameType, gameId, serverId, paymentMethod, paymentProof });
+
+            if (!packageName) {
+                alert("ကျေးဇူးပြု၍ Diamond သို့မဟုတ် Pass တစ်ခုရွေးပါ");
+                return;
+            }
 
             if (!paymentMethod) {
                 alert("ကျေးဇူးပြု၍ ငွေလွှဲနည်းလမ်း ရွေးပါ");
@@ -1335,7 +1178,13 @@
 
             try {
                 await sendTelegramPhotoWithCaption(paymentProof, messageText);
-                closeModal();
+                document.getElementById('purchaseForm').reset();
+                document.getElementById('paymentMethod').value = '';
+                document.getElementById('selectedPaymentDetails').style.display = 'none';
+                document.getElementById('promptPayQR').style.display = 'none';
+                document.getElementById('paymentMethodCard').style.display = 'none';
+                document.getElementById('fileUploadLabel').textContent = '';
+                document.getElementById('paymentProof').value = '';
                 showSuccessBanner();
                 addToOrders(packageName, gameType, gameId, serverId, timeStr);
             } catch (err) {
@@ -1354,7 +1203,6 @@
                 month: 'long', 
                 day: 'numeric' 
             });
-
             const ordersContainer = document.getElementById('ordersContent');
             const orderCard = document.createElement('div');
             orderCard.className = 'order-card';
@@ -1372,10 +1220,8 @@
                 <div class="order-date">${dateStr} ${timeStr}</div>
             `;
             ordersContainer.insertBefore(orderCard, ordersContainer.firstChild);
-
             const noOrdersMsg = ordersContainer.querySelector('.no-orders');
             if (noOrdersMsg) noOrdersMsg.style.display = 'none';
-
             let orders = JSON.parse(localStorage.getItem('ordersList') || '[]');
             orders.unshift({ 
                 packageName, 
@@ -1386,7 +1232,6 @@
                 timeStr,
                 currency: 'THB' 
             });
-            
             if (orders.length > 50) orders = orders.slice(0, 50);
             localStorage.setItem('ordersList', JSON.stringify(orders));
         }
@@ -1405,7 +1250,6 @@
         function loadOrdersFromStorage() {
             const storedOrders = JSON.parse(localStorage.getItem('ordersList') || '[]');
             const ordersContainer = document.getElementById('ordersContent');
-
             if (storedOrders.length > 0) {
                 ordersContainer.innerHTML = '';
                 storedOrders.forEach(order => {
@@ -1478,10 +1322,10 @@
             const fileLabel = document.getElementById('fileUploadLabel');
             if (file) {
                 fileLabel.textContent = file.name;
-                console.log('File selected:', file.name); // Debug log
+                console.log('File selected:', file.name);
             } else {
                 fileLabel.textContent = '';
-                console.log('No file selected'); // Debug log
+                console.log('No file selected');
             }
         });
 
@@ -1493,19 +1337,6 @@
                 fileLabel.textContent = file.name;
             } else {
                 fileLabel.textContent = '';
-            }
-        });
-
-        // Modal click outside
-        window.addEventListener('click', function(event) {
-            if (event.target === document.getElementById('purchaseModal')) {
-                closeModal();
-            }
-            if (event.target === document.getElementById('idCorrectionModal')) {
-                closeIdCorrectionModal();
-            }
-            if (event.target === document.getElementById('diamondNotReceivedModal')) {
-                closeDiamondNotReceivedModal();
             }
         });
 
@@ -1540,54 +1371,45 @@
         // Handle ID correction form submission
         document.getElementById('idCorrectionForm').addEventListener('submit', async function(e) {
             e.preventDefault();
-
             const gameId = document.getElementById('correctionGameId').value.trim();
             const serverId = document.getElementById('correctionServerId').value.trim();
             const proof = document.getElementById('correctionProof').files[0];
-
             if (!gameId || !serverId) {
                 alert("ကျေးဇူးပြု၍ ဂိမ်း ID နှင့် ဆာဗာ ID ထည့်ပါ");
                 return;
             }
-
             if (!proof) {
                 alert("ကျေးဇူးပြု၍ အော်ဒါမှတ်တန်းပုံ တင်ပါ");
                 return;
             }
-
             if (proof.size > 5 * 1024 * 1024) {
-                alert("ဖိုင်အရွယ်အစားသည် 5MB ထက်မကြီးရပါ�।");
+                alert("ဖိုင်အရွယ်အစားသည် 5MB ထက်မကြီးရပါ။");
                 document.getElementById('correctionProof').value = '';
                 document.getElementById('correctionFileLabel').textContent = '';
                 return;
             }
-
             if (!proof.type.startsWith('image/')) {
                 alert("ဓာတ်ပုံဖိုင်တစ်ခုသာ တင်ပေးပါ။");
                 document.getElementById('correctionProof').value = '';
                 document.getElementById('correctionFileLabel').textContent = '';
                 return;
             }
-
             document.getElementById('correctionSpinner').style.display = 'block';
             document.querySelector('#idCorrectionForm .submit-btn').style.display = 'none';
-
             const now = new Date();
             const timeStr = now.toLocaleTimeString('en-US', { hour12: true, hour: 'numeric', minute: 'numeric' });
-
             const messageText = `📢 ID အသစ်ပြောင်းထားချင်း\n\n` +
                 `🆔 New Game ID: ${gameId}\n` +
                 `🌐 New Server ID: ${serverId}\n\n` +
                 `⏰ Time: ${timeStr}\n` +
                 `💰 Currency: THB`;
-
             try {
                 await sendTelegramPhotoWithCaption(proof, messageText);
                 closeIdCorrectionModal();
                 showSuccessBanner();
             } catch (err) {
                 console.error("Correction submission error:", err);
-                alert("ID ပြောင်းလဲမှု ပေးပို့ရန် မအောင်မြင်ပါ။ ဆာဗာချိတ်ဆက်မှု ပြဿနာဖြစ်နိုင်သည်။ ကျေးဇူးပြု၍ Telegram @pphgaming သို့ ဆက်သွယ်ပါ သို့မဟုတ် နောက်မှ ထပ်ကြိုးစားပါ။");
+                alert("ID ပြောင်းလဲမှု ပေးပို့ရန် မအောင်မြင်ပါ။ ဆာဗာချိတ်ဆက်မှု ပြဿနာဖြစ်နိုင်သည်။ ကျေးဇူးပြု၍ Telegram @Maxx2104 သို့ ဆက်သွယ်ပါ သို့မဟုတ် နောက်မှ ထပ်ကြိုးစားပါ။");
                 document.getElementById('correctionSpinner').style.display = 'none';
                 document.querySelector('#idCorrectionForm .submit-btn').style.display = 'block';
             }
@@ -1600,7 +1422,6 @@
             const qrDiv = document.getElementById('promptPayQR');
             const methodCard = document.getElementById('paymentMethodCard');
             const iconImg = document.getElementById('paymentMethodIcon');
-            
             if (method) {
                 detailsDiv.style.display = 'block';
                 if (method === 'promptpay') {
