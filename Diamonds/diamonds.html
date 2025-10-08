@@ -11,18 +11,28 @@
             --mlbb-primary: #1E88E5;
             --mlbb-secondary: #00BFFF;
             --mlbb-accent: #2196F3;
-            --mlbb-dark: #FFFFFF;
-            --mlbb-darker: #F5F5F5;
+            --mlbb-dark: #e0e0e0;
+            --mlbb-darker: #ffffff;
             --mlbb-light: #333333;
             --mlbb-orange: #FF7F50;
             --mlbb-purple: #9370DB;
             --mlbb-green: #32CD32;
             --mlbb-blue-dark: #0D47A1;
             --nav-height: 60px;
-            --card-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            --transition: all 0.25s ease;
-            --border-radius: 10px;
+            --card-shadow: 8px 8px 16px rgba(0, 0, 0, 0.1), -8px -8px 16px rgba(255, 255, 255, 0.9);
+            --card-shadow-inset: inset 4px 4px 8px rgba(0, 0, 0, 0.1), inset -4px -4px 8px rgba(255, 255, 255, 0.9);
+            --transition: all 0.3s ease;
+            --border-radius: 12px;
             --android-font: 'Roboto', 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        /* Dark Mode */
+        [data-theme="dark"] {
+            --mlbb-dark: #2c2c2e;
+            --mlbb-darker: #1c1c1e;
+            --mlbb-light: #ffffff;
+            --card-shadow: 8px 8px 16px rgba(0, 0, 0, 0.3), -8px -8px 16px rgba(255, 255, 255, 0.05);
+            --card-shadow-inset: inset 4px 4px 8px rgba(0, 0, 0, 0.3), inset -4px -4px 8px rgba(255, 255, 255, 0.05);
         }
 
         * {
@@ -42,28 +52,28 @@
             line-height: 1.5;
             -webkit-font-smoothing: antialiased;
             touch-action: manipulation;
+            transition: var(--transition);
         }
 
         /* Header */
         .header {
-            background: linear-gradient(135deg, var(--mlbb-primary), var(--mlbb-secondary));
+            background: var(--mlbb-dark);
             padding: 0.8rem 1rem;
             text-align: center;
             position: sticky;
             top: 0;
-            box-shadow: 0 2px 10px rgba(30, 136, 229, 0.3);
+            box-shadow: var(--card-shadow);
             margin-bottom: 0.5rem;
-            border-bottom-left-radius: 16px;
-            border-bottom-right-radius: 16px;
+            border-bottom-left-radius: var(--border-radius);
+            border-bottom-right-radius: var(--border-radius);
             z-index: 10;
         }
 
         .logo {
             font-size: 1.5rem;
             font-weight: 700;
-            color: white;
+            color: var(--mlbb-light);
             margin-bottom: 0.2rem;
-            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
             letter-spacing: 0.3px;
         }
 
@@ -72,7 +82,25 @@
             opacity: 0.9;
             font-weight: 400;
             margin-bottom: 0.5rem;
-            color: white;
+            color: var(--mlbb-light);
+        }
+
+        /* Dark Mode Toggle */
+        .theme-toggle {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            cursor: pointer;
+            font-size: 1.2rem;
+            color: var(--mlbb-light);
+            padding: 0.5rem;
+            border-radius: 50%;
+            background: var(--mlbb-dark);
+            box-shadow: var(--card-shadow);
+        }
+
+        .theme-toggle:hover {
+            box-shadow: var(--card-shadow-inset);
         }
 
         /* Currency Info */
@@ -80,65 +108,12 @@
             text-align: center;
             padding: 0.8rem;
             background: var(--mlbb-darker);
-            border-bottom: 1px solid rgba(30, 136, 229, 0.2);
+            border-radius: var(--border-radius);
             font-size: 0.9rem;
             font-weight: 500;
             color: var(--mlbb-light);
-        }
-
-        /* Announcement Banner */
-        .announcement-banner {
-            background: linear-gradient(135deg, var(--mlbb-primary), var(--mlbb-secondary));
-            color: white;
-            padding: 0.6rem 1rem;
-            font-size: 0.85rem;
-            text-align: center;
-            position: relative;
-            z-index: 5;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            display: block;
-        }
-
-        .announcement-content {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .announcement-icon {
-            margin-right: 0.6rem;
-            font-size: 0.9rem;
-        }
-
-        .announcement-text {
-            flex: 1;
-        }
-
-        .announcement-link {
-            color: white;
-            font-weight: 600;
-            text-decoration: underline;
-            margin-left: 0.3rem;
-            transition: var(--transition);
-        }
-
-        .announcement-link:hover {
-            color: #E3F2FD;
-        }
-
-        .announcement-close {
-            margin-left: 1rem;
-            cursor: pointer;
-            opacity: 0.8;
-            transition: var(--transition);
-            padding: 0.2rem;
-        }
-
-        .announcement-close:hover {
-            opacity: 1;
-            transform: scale(1.1);
+            box-shadow: var(--card-shadow);
+            margin: 0.5rem 1rem;
         }
 
         /* Diamond Grid */
@@ -158,7 +133,6 @@
             padding: 1rem 0.6rem;
             text-align: center;
             transition: var(--transition);
-            border: 1px solid rgba(30, 136, 229, 0.2);
             box-shadow: var(--card-shadow);
             cursor: pointer;
             position: relative;
@@ -170,19 +144,9 @@
             align-items: center;
         }
 
-        .diamond-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--mlbb-primary), var(--mlbb-secondary));
-        }
-
         .diamond-card:hover {
+            box-shadow: var(--card-shadow-inset);
             transform: translateY(-3px);
-            box-shadow: 0 4px 12px rgba(30, 136, 229, 0.3);
         }
 
         .diamond-card:active {
@@ -201,9 +165,9 @@
             text-transform: uppercase;
             letter-spacing: 0.3px;
             z-index: 2;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
             background: var(--mlbb-primary);
             color: white;
+            box-shadow: var(--card-shadow);
         }
 
         /* Diamond Content */
@@ -240,12 +204,12 @@
             font-size: 0.85rem;
             font-weight: 600;
             color: var(--mlbb-light);
-            background: rgba(30, 136, 229, 0.1);
+            background: var(--mlbb-darker);
             padding: 0.2rem 0.6rem;
             border-radius: 15px;
             display: inline-block;
             margin-top: 0.2rem;
-            border: 1px solid rgba(30, 136, 229, 0.3);
+            box-shadow: var(--card-shadow-inset);
         }
 
         /* Modal Styles */
@@ -270,8 +234,7 @@
             max-width: 320px;
             margin: auto;
             padding: 1rem;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-            border: 1px solid rgba(30, 136, 229, 0.2);
+            box-shadow: var(--card-shadow);
             position: fixed;
             top: 50%;
             left: 50%;
@@ -319,19 +282,18 @@
         .form-control {
             width: 100%;
             padding: 0.6rem 0.8rem;
-            background: rgba(255, 255, 255, 0.8);
-            border: 1px solid rgba(30, 136, 229, 0.2);
+            background: var(--mlbb-darker);
+            border: none;
             border-radius: 6px;
             color: var(--mlbb-light);
             font-size: 0.85rem;
             transition: var(--transition);
-            -webkit-appearance: none;
+            box-shadow: var(--card-shadow-inset);
         }
 
         .form-control:focus {
             outline: none;
-            border-color: var(--mlbb-primary);
-            background: rgba(30, 136, 229, 0.05);
+            box-shadow: var(--card-shadow);
         }
 
         /* File Upload */
@@ -340,15 +302,14 @@
             align-items: center;
             justify-content: center;
             padding: 0.8rem;
-            background: rgba(255, 255, 255, 0.5);
-            border: 2px dashed rgba(30, 136, 229, 0.3);
+            background: var(--mlbb-darker);
             border-radius: 6px;
             transition: var(--transition);
-            position: relative;
+            box-shadow: var(--card-shadow);
         }
 
         .file-upload:hover {
-            border-color: var(--mlbb-primary);
+            box-shadow: var(--card-shadow-inset);
         }
 
         .file-upload-btn {
@@ -360,13 +321,14 @@
             align-items: center;
             gap: 0.4rem;
             padding: 0.4rem 0.8rem;
-            background: rgba(30, 136, 229, 0.1);
+            background: var(--mlbb-darker);
             border-radius: 6px;
             transition: var(--transition);
+            box-shadow: var(--card-shadow);
         }
 
         .file-upload-btn:hover {
-            background: rgba(30, 136, 229, 0.2);
+            box-shadow: var(--card-shadow-inset);
         }
 
         .file-upload input[type="file"] {
@@ -375,11 +337,11 @@
 
         /* Payment Methods */
         .payment-info {
-            background: rgba(30, 136, 229, 0.1);
+            background: var(--mlbb-darker);
             border-radius: 6px;
             padding: 0.6rem;
             margin-bottom: 1rem;
-            border-left: 3px solid var(--mlbb-primary);
+            box-shadow: var(--card-shadow-inset);
         }
 
         .payment-method {
@@ -413,7 +375,8 @@
         .payment-method small {
             display: block;
             font-size: 0.75rem;
-            color: rgba(51, 51, 51, 0.7);
+            color: var(--mlbb-light);
+            opacity: 0.7;
             line-height: 1.4;
         }
 
@@ -421,8 +384,8 @@
         .submit-btn {
             width: 100%;
             padding: 0.8rem;
-            background: linear-gradient(135deg, var(--mlbb-primary), var(--mlbb-secondary));
-            color: white;
+            background: var(--mlbb-darker);
+            color: var(--mlbb-light);
             border: none;
             border-radius: 6px;
             font-size: 0.9rem;
@@ -430,30 +393,16 @@
             cursor: pointer;
             margin-top: 1rem;
             transition: var(--transition);
-            box-shadow: 0 3px 8px rgba(30, 136, 229, 0.3);
-            letter-spacing: 0.3px;
-            position: relative;
-            overflow: hidden;
+            box-shadow: var(--card-shadow);
         }
 
-        .submit-btn::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.2);
-            transition: left 0.3s ease;
-        }
-
-        .submit-btn:hover::after {
-            left: 0;
+        .submit-btn:hover {
+            box-shadow: var(--card-shadow-inset);
         }
 
         .submit-btn:active {
             transform: translateY(1px);
-            box-shadow: 0 2px 5px rgba(30, 136, 229, 0.3);
+            box-shadow: var(--card-shadow-inset);
         }
 
         .submit-btn i {
@@ -467,12 +416,12 @@
             left: 0;
             right: 0;
             height: var(--nav-height);
-            background: var(--mlbb-primary);
-            backdrop-filter: blur(5px);
+            background: var(--mlbb-darker);
             display: flex;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             z-index: 100;
             padding: 0 0.8rem;
+            box-shadow: var(--card-shadow);
         }
 
         .nav-item {
@@ -481,7 +430,8 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            color: rgba(255, 255, 255, 0.7);
+            color: var(--mlbb-light);
+            opacity: 0.7;
             text-decoration: none;
             font-size: 0.65rem;
             transition: var(--transition);
@@ -489,7 +439,7 @@
         }
 
         .nav-item.active {
-            color: white;
+            opacity: 1;
         }
 
         .nav-item.active::after {
@@ -500,7 +450,7 @@
             transform: translateX(-50%);
             width: 18px;
             height: 2px;
-            background: white;
+            background: var(--mlbb-primary);
             border-radius: 2px;
         }
 
@@ -529,8 +479,8 @@
 
         /* Success Notification */
         .success-banner {
-            background: linear-gradient(135deg, var(--mlbb-green), #2E7D32);
-            color: white;
+            background: var(--mlbb-darker);
+            color: var(--mlbb-light);
             text-align: center;
             padding: 10px;
             border-radius: 6px;
@@ -543,17 +493,17 @@
             z-index: 1000;
             width: 90%;
             max-width: 320px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            box-shadow: var(--card-shadow);
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 0.85rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .success-banner i {
             margin-right: 8px;
             font-size: 1.1rem;
+            color: var(--mlbb-green);
         }
 
         @keyframes fadeIn {
@@ -572,7 +522,6 @@
             border-radius: var(--border-radius);
             padding: 0.9rem;
             margin-bottom: 0.8rem;
-            border: 1px solid rgba(30, 136, 229, 0.2);
             font-size: 0.8rem;
             box-shadow: var(--card-shadow);
             color: var(--mlbb-light);
@@ -597,16 +546,17 @@
             font-size: 0.65rem;
             padding: 0.15rem 0.5rem;
             border-radius: 10px;
-            background: rgba(30, 136, 229, 0.15);
+            background: var(--mlbb-darker);
             color: var(--mlbb-primary);
             display: inline-block;
             font-weight: 600;
-            border: 1px solid rgba(30, 136, 229, 0.2);
+            box-shadow: var(--card-shadow-inset);
         }
 
         .order-date {
             font-size: 0.65rem;
-            color: rgba(51, 51, 51, 0.6);
+            color: var(--mlbb-light);
+            opacity: 0.6;
             margin-top: 0.5rem;
             text-align: right;
         }
@@ -614,7 +564,8 @@
         .no-orders {
             text-align: center;
             padding: 2rem;
-            color: rgba(51, 51, 51, 0.5);
+            color: var(--mlbb-light);
+            opacity: 0.5;
             font-size: 0.9rem;
         }
 
@@ -635,12 +586,12 @@
             justify-content: space-between;
             cursor: pointer;
             transition: var(--transition);
-            border: 1px solid rgba(30, 136, 229, 0.2);
+            box-shadow: var(--card-shadow);
             color: var(--mlbb-light);
         }
 
         .help-item:hover {
-            background: rgba(30, 136, 229, 0.05);
+            box-shadow: var(--card-shadow-inset);
         }
 
         .help-item:active {
@@ -654,7 +605,8 @@
         }
 
         .help-item i:last-child {
-            color: rgba(51, 51, 51, 0.5);
+            color: var(--mlbb-light);
+            opacity: 0.5;
             font-size: 0.8rem;
         }
 
@@ -670,12 +622,12 @@
             right: 20px;
             width: 60px;
             height: 60px;
-            background: linear-gradient(135deg, var(--mlbb-primary), var(--mlbb-secondary));
+            background: var(--mlbb-darker);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 8px 20px rgba(30, 136, 229, 0.4);
+            box-shadow: var(--card-shadow);
             cursor: pointer;
             z-index: 99;
             transition: all 0.3s ease;
@@ -684,12 +636,12 @@
 
         .floating-ball i {
             font-size: 1.8rem;
-            color: white;
+            color: var(--mlbb-primary);
         }
 
         .floating-ball:hover {
+            box-shadow: var(--card-shadow-inset);
             transform: scale(1.1);
-            box-shadow: 0 10px 25px rgba(30, 136, 229, 0.6);
         }
 
         .floating-ball:active {
@@ -733,16 +685,6 @@
             }
         }
 
-        /* High-Density Screens */
-        @media (-webkit-min-device-pixel-ratio: 2) {
-            .diamond-card, .modal-content, .order-card {
-                border-width: 0.5px;
-            }
-            .submit-btn, .badge {
-                box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-            }
-        }
-
         /* Scrollbar */
         ::-webkit-scrollbar {
             width: 5px;
@@ -780,9 +722,10 @@
         }
 
         .payment-select-wrapper select {
-            background: white !important;
+            background: var(--mlbb-darker) !important;
             color: var(--mlbb-light) !important;
-            border: 1px solid rgba(30, 136, 229, 0.2) !important;
+            border: none !important;
+            box-shadow: var(--card-shadow-inset);
             appearance: none;
             -webkit-appearance: none;
             padding-right: 2rem;
@@ -808,29 +751,32 @@
 
         /* Form placeholders */
         ::placeholder {
-            color: rgba(51, 51, 51, 0.6) !important;
-            opacity: 1;
+            color: var(--mlbb-light) !important;
+            opacity: 0.6;
         }
 
         :-ms-input-placeholder {
-            color: rgba(51, 51, 51, 0.6) !important;
+            color: var(--mlbb-light) !important;
+            opacity: 0.6;
         }
 
         ::-ms-input-placeholder {
-            color: rgba(51, 51, 51, 0.6) !important;
+            color: var(--mlbb-light) !important;
+            opacity: 0.6;
         }
 
         /* Payment details styling */
         .payment-icon-circle {
             width: 40px;
             height: 40px;
-            background: linear-gradient(135deg, var(--mlbb-primary), var(--mlbb-secondary));
+            background: var(--mlbb-darker);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             margin-right: 0.8rem;
             flex-shrink: 0;
+            box-shadow: var(--card-shadow);
         }
 
         .payment-icon-circle img {
@@ -840,17 +786,27 @@
         }
 
         #selectedPaymentDetails {
-            background: rgba(30, 136, 229, 0.05);
-            border: 1px solid rgba(30, 136, 229, 0.1);
+            background: var(--mlbb-darker);
             padding: 0.6rem;
             border-radius: 6px;
+            box-shadow: var(--card-shadow-inset);
+        }
+
+        #promptPayQR img {
+            width: 150px;
+            height: auto;
+            border-radius: 6px;
+            box-shadow: var(--card-shadow);
         }
     </style>
 </head>
-<body>
+<body data-theme="light">
     <!-- Header Section -->
     <div class="header">
         <div class="logo">PPH-Gaming-Diamonds-Store</div>
+        <div class="theme-toggle" onclick="toggleTheme()">
+            <i class="fas fa-moon"></i>
+        </div>
     </div>
 
     <!-- Currency Info -->
@@ -1041,7 +997,7 @@
                         </div>
                     </div>
                     <div id="promptPayQR" style="display: none; text-align: center; margin-top: 1rem;">
-                        <img src="https://raw.githubusercontent.com/pphdex2022/Websites/refs/heads/main/Diamonds/bank.jpg" alt="Prompt Pay QR Code" style="width: 150px; height: auto; border-radius: 6px;">
+                        <img id="promptPayQRImage" src="https://raw.githubusercontent.com/pphdex2022/Websites/refs/heads/main/Diamonds/bank.jpg" alt="Prompt Pay QR Code">
                     </div>
                 </div>
             </div>
@@ -1067,7 +1023,7 @@
                             <i class="fas fa-cloud-upload-alt"></i><br>
                             ဖိုင်ရွေးရန်
                         </label>
-                        <input type="file" id="paymentProof" accept="image/*" style="display: none;" required>
+                        <input type="file" id="paymentProof" accept="image/*" required>
                         <span id="fileUploadLabel" style="margin-left: 0.5rem; font-size: 0.85rem;"></span>
                     </div>
                 </div>
@@ -1140,7 +1096,7 @@
                             <i class="fas fa-cloud-upload-alt"></i><br>
                             ဖိုင်ရွေးရန်
                         </label>
-                        <input type="file" id="correctionProof" accept="image/*" style="display: none;" required>
+                        <input type="file" id="correctionProof" accept="image/*" required>
                         <span id="correctionFileLabel" style="margin-left: 0.5rem; font-size: 0.85rem;"></span>
                     </div>
                 </div>
@@ -1214,6 +1170,23 @@
                 { dia: "Twilight Pass", price: 280 }
             ]
         };
+
+        // Toggle theme
+        function toggleTheme() {
+            const body = document.body;
+            const currentTheme = body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            body.setAttribute('data-theme', newTheme);
+            document.querySelector('.theme-toggle i').className = `fas fa-${newTheme === 'light' ? 'moon' : 'sun'}`;
+            localStorage.setItem('theme', newTheme);
+        }
+
+        // Load theme from localStorage
+        function loadTheme() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.body.setAttribute('data-theme', savedTheme);
+            document.querySelector('.theme-toggle i').className = `fas fa-${savedTheme === 'light' ? 'moon' : 'sun'}`;
+        }
 
         // Fetch prices from JSON
         function loadPricesFromJSON() {
@@ -1540,19 +1513,6 @@
             }
         });
 
-        // Close announcement banner
-        function closeAnnouncement() {
-            document.querySelector('.announcement-banner').style.display = 'none';
-            localStorage.setItem('announcementClosed', 'true');
-        }
-
-        // Check if announcement was previously closed
-        function checkAnnouncement() {
-            if (!localStorage.getItem('announcementClosed')) {
-                document.querySelector('.announcement-banner').style.display = 'block';
-            }
-        }
-
         // Show ID correction form
         function showIdCorrectionForm() {
             document.getElementById('idCorrectionModal').style.display = 'block';
@@ -1676,10 +1636,13 @@
                 document.getElementById('paymentMethodName').textContent = methodName;
                 document.getElementById('paymentAccountDetails').innerHTML = `
                     <span style="font-weight: 400;">${accountNumber}</span><br>
-                    <span style="color: rgba(0, 0, 0, 0.7);">${accountHolder}</span>
+                    <span style="color: var(--mlbb-light); opacity: 0.7;">${accountHolder}</span>
                 `;
                 document.getElementById('processingTime').textContent = processingTime;
                 iconImg.src = iconUrl;
+                iconImg.onerror = () => {
+                    iconImg.src = 'https://raw.githubusercontent.com/pphdex2022/Websites/refs/heads/main/Diamonds/banknaw.jpg';
+                };
             } else {
                 detailsDiv.style.display = 'none';
                 qrDiv.style.display = 'none';
@@ -1688,9 +1651,9 @@
 
         // Initialize on load
         window.onload = function () {
+            loadTheme();
             loadPricesFromJSON();
             loadOrdersFromStorage();
-            checkAnnouncement();
         };
     </script>
 </body>
