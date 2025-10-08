@@ -1,0 +1,27 @@
+{
+  "PremiumVIPTHB": [
+    {
+      "Premium": "1 month",
+      "price": 70
+    },
+    {
+      "Premium": "2 months",
+      "price": 140
+    },
+    {
+      "Premium": "3 months",
+      "price": 200
+    },
+    {
+      "Premium": "4 months",
+      "price": 260
+    },
+    {
+      "Premium": "5 months",
+      "price": 340
+    }
+  ],
+  "text": "ကြည်ရန်",
+  "imglinks": "https://example.com/myimage.jpg",
+  "videolink": "https://example.com/myvideo.mp4"
+}
