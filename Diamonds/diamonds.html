@@ -346,7 +346,7 @@
 
         .payment-method:last-child {
             margin-bottom: 0;
-            padding-bottom: 0;
+            padding价值观: 0;
             border-bottom: none;
         }
 
@@ -789,6 +789,8 @@
             height: auto;
             border-radius: 6px;
             box-shadow: var(--card-shadow);
+            display: block;
+            margin: 0 auto;
         }
     </style>
 </head>
@@ -975,7 +977,10 @@
                 </div>
                 
                 <div id="selectedPaymentDetails" style="display: none;">
-                    <div class="payment-method-card">
+                    <div id="promptPayQR" style="display: none; text-align: center; margin-top: 1rem;">
+                        <img id="promptPayQRImage" src="https://raw.githubusercontent.com/pphdex2022/Websites/refs/heads/main/Diamonds/bank.jpg" alt="Prompt Pay QR Code">
+                    </div>
+                    <div id="paymentMethodCard" style="display: none;" class="payment-method-card">
                         <div class="payment-icon-circle">
                             <img id="paymentMethodIcon" src="" alt="Payment Icon" style="width: 24px; height: 24px; object-fit: contain;">
                         </div>
@@ -987,9 +992,6 @@
                                 <span id="processingTime"></span>
                             </div>
                         </div>
-                    </div>
-                    <div id="promptPayQR" style="display: none; text-align: center; margin-top: 1rem;">
-                        <img id="promptPayQRImage" src="https://raw.githubusercontent.com/pphdex2022/Websites/refs/heads/main/Diamonds/bank.jpg" alt="Prompt Pay QR Code">
                     </div>
                 </div>
             </div>
@@ -1230,6 +1232,7 @@
             document.getElementById('paymentMethod').value = '';
             document.getElementById('selectedPaymentDetails').style.display = 'none';
             document.getElementById('promptPayQR').style.display = 'none';
+            document.getElementById('paymentMethodCard').style.display = 'none';
             document.getElementById('fileUploadLabel').textContent = '';
             document.getElementById('paymentProof').value = ''; // Reset file input
         }
@@ -1558,7 +1561,7 @@
             }
 
             if (proof.size > 5 * 1024 * 1024) {
-                alert("ဖိုင်အရွယ်အစားသည် 5MB ထက်မကြီးရပါ။");
+                alert("ဖိုင်အရွယ်အစားသည် 5MB ထက်မကြီးရပါ�।");
                 document.getElementById('correctionProof').value = '';
                 document.getElementById('correctionFileLabel').textContent = '';
                 return;
@@ -1600,57 +1603,55 @@
             const method = this.value;
             const detailsDiv = document.getElementById('selectedPaymentDetails');
             const qrDiv = document.getElementById('promptPayQR');
+            const methodCard = document.getElementById('paymentMethodCard');
             const iconImg = document.getElementById('paymentMethodIcon');
             
             if (method) {
                 detailsDiv.style.display = 'block';
-                let methodName, accountNumber, accountHolder, processingTime, iconUrl;
-                switch(method) {
-                    case 'scbeasy':
-                        methodName = 'SCB EASY';
-                        accountNumber = '4381489599';
-                        accountHolder = 'MINHEIN';
-                        processingTime = 'နံနက် 9 AM မှ ည 12 PM ထိအားသည်';
-                        iconUrl = 'https://www.scb.co.th/CMSPages/GetAzureFile.aspx?path=~%5Ccontent%5Cmedia%5Ccommons%5Cscb-logo-desktop.svg&hash=e93f9ca769012385f2828fb9afaf1b285ad80c19bf453e23286f6f6e84d598ab';
-                        qrDiv.style.display = 'none';
-                        break;
-                    case 'TrueMoney':
-                        methodName = 'TrueMoney';
-                        accountNumber = '0831072369';
-                        accountHolder = 'MINHEIN';
-                        processingTime = 'နံနက် 9 AM မှ ည 12 PM ထိအားသည်';
-                        iconUrl = 'https://www.truemoney.com/wp-content/uploads/2023/02/truemoney_logo_1x.png';
-                        qrDiv.style.display = 'none';
-                        break;
-                    case 'promptpay':
-                        methodName = 'Prompt Pay';
-                        accountNumber = 'MINHEIN';
-                        iconUrl = 'https://raw.githubusercontent.com/pphdex2022/Websites/refs/heads/main/Diamonds/banknaw.jpg';
-                        qrDiv.style.display = 'block';
-                        break;
-                }
-                document.getElementById('paymentMethodName').textContent = methodName;
-                document.getElementById('paymentAccountDetails').innerHTML = `
-                    <span style="font-weight: 400;">${accountNumber}</span><br>
-                    <span style="color: var(--mlbb-light); opacity: 0.7;">${accountHolder}</span>
-                `;
-                document.getElementById('processingTime').textContent = processingTime;
-                iconImg.src = iconUrl;
-                iconImg.onerror = () => {
-                    iconImg.src = 'https://raw.githubusercontent.com/pphdex2022/Websites/refs/heads/main/Diamonds/banknaw.jpg';
-                };
-                // Ensure QR code loads for Prompt Pay
                 if (method === 'promptpay') {
+                    qrDiv.style.display = 'block';
+                    methodCard.style.display = 'none';
                     const qrImg = document.getElementById('promptPayQRImage');
                     qrImg.src = 'https://raw.githubusercontent.com/pphdex2022/Websites/refs/heads/main/Diamonds/bank.jpg';
                     qrImg.onerror = () => {
                         console.error('Failed to load QR code');
                         alert('QR code မပြသပါ။ ကျေးဇူးပြု၍ နောက်မှ ထပ်ကြိုးစားပါ။');
                     };
+                } else {
+                    qrDiv.style.display = 'none';
+                    methodCard.style.display = 'flex';
+                    let methodName, accountNumber, accountHolder, processingTime, iconUrl;
+                    switch(method) {
+                        case 'scbeasy':
+                            methodName = 'SCB EASY';
+                            accountNumber = '4381489599';
+                            accountHolder = 'MINHEIN';
+                            processingTime = 'နံနက် 9 AM မှ ည 12 PM ထိအားသည်';
+                            iconUrl = 'https://www.scb.co.th/CMSPages/GetAzureFile.aspx?path=~%5Ccontent%5Cmedia%5Ccommons%5Cscb-logo-desktop.svg&hash=e93f9ca769012385f2828fb9afaf1b285ad80c19bf453e23286f6f6e84d598ab';
+                            break;
+                        case 'TrueMoney':
+                            methodName = 'TrueMoney';
+                            accountNumber = '0831072369';
+                            accountHolder = 'MINHEIN';
+                            processingTime = 'နံနက် 9 AM မှ ည 12 PM ထိအားသည်';
+                            iconUrl = 'https://www.truemoney.com/wp-content/uploads/2023/02/truemoney_logo_1x.png';
+                            break;
+                    }
+                    document.getElementById('paymentMethodName').textContent = methodName;
+                    document.getElementById('paymentAccountDetails').innerHTML = `
+                        <span style="font-weight: 400;">${accountNumber}</span><br>
+                        <span style="color: var(--mlbb-light); opacity: 0.7;">${accountHolder}</span>
+                    `;
+                    document.getElementById('processingTime').textContent = processingTime;
+                    iconImg.src = iconUrl;
+                    iconImg.onerror = () => {
+                        iconImg.src = 'https://raw.githubusercontent.com/pphdex2022/Websites/refs/heads/main/Diamonds/banknaw.jpg';
+                    };
                 }
             } else {
                 detailsDiv.style.display = 'none';
                 qrDiv.style.display = 'none';
+                methodCard.style.display = 'none';
             }
         });
 
