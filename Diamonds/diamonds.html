@@ -77,14 +77,6 @@
             letter-spacing: 0.3px;
         }
 
-        .subtitle {
-            font-size: 0.8rem;
-            opacity: 0.9;
-            font-weight: 400;
-            margin-bottom: 0.5rem;
-            color: var(--mlbb-light);
-        }
-
         /* Dark Mode Toggle */
         .theme-toggle {
             position: absolute;
@@ -1239,6 +1231,7 @@
             document.getElementById('selectedPaymentDetails').style.display = 'none';
             document.getElementById('promptPayQR').style.display = 'none';
             document.getElementById('fileUploadLabel').textContent = '';
+            document.getElementById('paymentProof').value = ''; // Reset file input
         }
 
         // Close modal
@@ -1275,6 +1268,7 @@
         // Submit handler
         document.getElementById('purchaseForm').addEventListener('submit', async function(e) {
             e.preventDefault();
+            console.log('Form submission triggered'); // Debug log
 
             const packageName = document.getElementById('selectedPackage').value;
             const gameType = document.getElementById('gameType').value;
@@ -1282,6 +1276,8 @@
             const serverId = document.getElementById('serverId').value.trim();
             const paymentProof = document.getElementById('paymentProof').files[0];
             const paymentMethod = document.getElementById('paymentMethod').value;
+
+            console.log('Form data:', { packageName, gameType, gameId, serverId, paymentMethod, paymentProof }); // Debug log
 
             if (!paymentMethod) {
                 alert("ကျေးဇူးပြု၍ ငွေလွှဲနည်းလမ်း ရွေးပါ");
@@ -1484,8 +1480,10 @@
             const fileLabel = document.getElementById('fileUploadLabel');
             if (file) {
                 fileLabel.textContent = file.name;
+                console.log('File selected:', file.name); // Debug log
             } else {
                 fileLabel.textContent = '';
+                console.log('No file selected'); // Debug log
             }
         });
 
@@ -1643,6 +1641,15 @@
                 iconImg.onerror = () => {
                     iconImg.src = 'https://raw.githubusercontent.com/pphdex2022/Websites/refs/heads/main/Diamonds/banknaw.jpg';
                 };
+                // Ensure QR code loads for Prompt Pay
+                if (method === 'promptpay') {
+                    const qrImg = document.getElementById('promptPayQRImage');
+                    qrImg.src = 'https://raw.githubusercontent.com/pphdex2022/Websites/refs/heads/main/Diamonds/bank.jpg';
+                    qrImg.onerror = () => {
+                        console.error('Failed to load QR code');
+                        alert('QR code မပြသပါ။ ကျေးဇူးပြု၍ နောက်မှ ထပ်ကြိုးစားပါ။');
+                    };
+                }
             } else {
                 detailsDiv.style.display = 'none';
                 qrDiv.style.display = 'none';
